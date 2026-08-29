@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exam - My Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: #fffafa;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #fce4ec;
+            padding: 30px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            border: 2px solid #f3a9c2;
+            border-radius: 10px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        nav a:hover {
+            background-color: #ffe0eb;
+        }
+
+        nav a i {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #f3a9c2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MAIN */
+        main {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        main h2 {
+            font-size: 35px;
+            margin-bottom: 35px;
+        }
+
+        /* UPLOAD BOX */
+        .upload-box {
+            max-width: 850px;
+            margin: auto;
+            border: 2px solid #f3a9c2;
+            border-radius: 15px;
+            padding: 45px 30px;
+            background-color: white;
+        }
+
+        .upload-box h3 {
+            font-size: 25px;
+            margin-top: 0;
+        }
+
+        .upload-box p {
+            font-size: 18px;
+        }
+
+        /* FILE INPUT */
+        #examFile {
+            border: 2px solid #f3a9c2;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            background-color: white;
+        }
+
+        /* UPLOAD BUTTON */
+        .upload-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 14px 25px;
+            margin-left: 10px;
+            background-color: #d96b91;
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background-color: #c6537c;
+        }
+
+        /* UPLOADED EXAMS */
+        .uploaded-title {
+            margin-top: 40px;
+            font-size: 25px;
+        }
+
+        #examsContainer {
+            max-width: 850px;
+            margin: 25px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* EXAM CARD */
+        .exam-card {
+            border: 2px solid #f3a9c2;
+            border-radius: 15px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        /* IMAGE */
+        .exam-card img {
+            max-width: 100%;
+            max-height: 700px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
+        /* FILE LINK */
+        .file-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #d96b91;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-link:hover {
+            background-color: #b83f68;
+        }
+
+        /* DELETE BUTTON */
+        .delete-btn {
+            background-color: #d96b91;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .delete-btn:hover {
+            background-color: #b83f68;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            #examFile {
+                max-width: 90%;
+                margin-bottom: 10px;
+            }
+
+            .upload-btn {
+                margin-left: 0;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>My Portfolio</h1>
+
+    <nav>
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="quizzes.html">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Quizzes
+        </a>
+
+        <a href="activities.html">
+            <i class="fa-solid fa-list-check"></i>
+            Activities
+        </a>
+
+        <a href="exam.html">
+            <i class="fa-solid fa-book"></i>
+            Exam
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <h2>My Exams</h2>
+
+    <div class="upload-box">
+
+        <h3>Insert Your Exam</h3>
+
+        <p>Choose a photo or file of your exam:</p>
+
+        <input
+            type="file"
+            id="examFile"
+            accept="image/*,.pdf,.doc,.docx,.ppt,.pptx"
+        >
+
+        <button class="upload-btn" onclick="uploadExam()">
+            Upload Exam
+        </button>
+
+        <h3 class="uploaded-title">
+            Your Uploaded Exams
+        </h3>
+
+    </div>
+
+    <div id="examsContainer"></div>
+
+</main>
+
+
+<script>
+
+    /* GET SAVED EXAMS */
+
+    let exams =
+        JSON.parse(localStorage.getItem("exams")) || [];
+
+
+    /* DISPLAY EXAMS */
+
+    function displayExams() {
+
+        const container =
+            document.getElementById("examsContainer");
+
+        container.innerHTML = "";
+
+
+        exams.forEach((exam, index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "exam-card";
+
+
+            /* IF IMAGE */
+
+            if (exam.type.startsWith("image/")) {
+
+                const image =
+                    document.createElement("img");
+
+                image.src = exam.data;
+
+                card.appendChild(image);
+
+            }
+
+
+            /* IF OTHER FILE */
+
+            else {
+
+                const link =
+                    document.createElement("a");
+
+                link.href = exam.data;
+
+                link.download = "Exam";
+
+                link.textContent =
+                    "Open / Download Exam";
+
+                link.className = "file-link";
+
+                card.appendChild(link);
+
+            }
+
+
+            /* DELETE BUTTON */
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.textContent = "Delete";
+
+            deleteButton.className = "delete-btn";
+
+
+            deleteButton.onclick = function() {
+
+                deleteExam(index);
+
+            };
+
+
+            card.appendChild(deleteButton);
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    /* UPLOAD EXAM */
+
+    function uploadExam() {
+
+        const fileInput =
+            document.getElementById("examFile");
+
+        const file =
+            fileInput.files[0];
+
+
+        if (!file) {
+
+            alert("Please choose an exam first.");
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(event) {
+
+            const exam = {
+
+                /* Saved internally but NOT displayed */
+                name: file.name,
+
+                type: file.type,
+
+                data: event.target.result
+
+            };
+
+
+            /* ADD EXAM */
+
+            exams.push(exam);
+
+
+            /* SAVE EXAMS */
+
+            localStorage.setItem(
+                "exams",
+                JSON.stringify(exams)
+            );
+
+
+            /* DISPLAY */
+
+            displayExams();
+
+
+            /* CLEAR INPUT */
+
+            fileInput.value = "";
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    }
+
+
+    /* DELETE EXAM */
+
+    function deleteExam(index) {
+
+        if (
+            confirm("Are you sure you want to delete this exam?")
+        ) {
+
+            exams.splice(index, 1);
+
+
+            localStorage.setItem(
+                "exams",
+                JSON.stringify(exams)
+            );
+
+
+            displayExams();
+
+        }
+
+    }
+
+
+    /* SHOW SAVED EXAMS WHEN PAGE OPENS */
+
+    displayExams();
+
+</script>
+
+</body>
+</html>
