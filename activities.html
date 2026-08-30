@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Activities - My Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: #fffafa;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #fce4ec;
+            padding: 30px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            border: 2px solid #f3a9c2;
+            border-radius: 10px;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        nav a:hover {
+            background-color: #ffe0eb;
+        }
+
+        nav a i {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #f3a9c2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MAIN */
+        main {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        main h2 {
+            font-size: 35px;
+            margin-bottom: 35px;
+        }
+
+        /* ACTIVITIES CONTAINER */
+        #activitiesContainer {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* ACTIVITY CARD */
+        .activity-card {
+            border: 2px solid #f3a9c2;
+            border-radius: 15px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        /* ACTIVITY NAME */
+        .file-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* FILE LINK */
+        .file-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #d96b91;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .file-link:hover {
+            background-color: #b83f68;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            nav a i {
+                width: 35px;
+                height: 35px;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            main h2 {
+                font-size: 30px;
+            }
+
+            .activity-card {
+                padding: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1></h1>
+
+    <nav>
+
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="quizzes.html">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Quizzes
+        </a>
+
+        <a href="activities.html">
+            <i class="fa-solid fa-list-check"></i>
+            Activities
+        </a>
+
+        <a href="exam.html">
+            <i class="fa-solid fa-book"></i>
+            Exam
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <h2>My Activities</h2>
+
+    <div id="activitiesContainer">
+
+        <!--
+        ADD YOUR ACTIVITIES HERE
+
+        Example:
+
+        <div class="activity-card">
+
+            <div class="file-name">
+                Activity 1
+            </div>
+
+            <a
+                href="activities/activity1.pdf"
+                target="_blank"
+                class="file-link">
+                Open Activity
+            </a>
+
+        </div>
+        -->
+
+    </div>
+
+</main>
+
+</body>
+</html>
