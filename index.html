@@ -467,6 +467,97 @@
 
 
         /* =========================
+           CHANGING NAME
+        ========================= */
+
+        .name-text span {
+            position: relative;
+        }
+
+
+        .name-text span::after {
+            content: "Charm";
+
+            animation:
+                nameChange 9s infinite,
+                nameColor 9s infinite;
+        }
+
+
+        /* =========================
+           NAME TEXT CHANGE
+        ========================= */
+
+        @keyframes nameChange {
+
+            /* English */
+            0%,
+            30% {
+                content: "Charm";
+            }
+
+
+            /* Japanese */
+            31%,
+            60% {
+                content: "チャーム";
+            }
+
+
+            /* Korean */
+            61%,
+            90% {
+                content: "참";
+            }
+
+
+            /* Back to English */
+            91%,
+            100% {
+                content: "Charm";
+            }
+
+        }
+
+
+        /* =========================
+           NAME COLOR CHANGE
+           PINK + PURPLE ONLY
+        ========================= */
+
+        @keyframes nameColor {
+
+            /* Charm - Pink */
+            0%,
+            30% {
+                color: #d94f83;
+            }
+
+
+            /* Japanese - Purple */
+            31%,
+            60% {
+                color: #9b59b6;
+            }
+
+
+            /* Korean - Dark Pink */
+            61%,
+            90% {
+                color: #e06aa0;
+            }
+
+
+            /* Back to Charm - Pink */
+            91%,
+            100% {
+                color: #d94f83;
+            }
+
+        }
+
+
+        /* =========================
            TYPING TEXT
         ========================= */
 
@@ -757,8 +848,8 @@
 
         <div class="home-content">
 
-            <h1>
-                Halooo! It's me Charm
+            <h1 class="name-text">
+                Halooo! It's me <span></span>
             </h1>
 
 
