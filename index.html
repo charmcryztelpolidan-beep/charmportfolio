@@ -25,7 +25,99 @@
             color: #222;
             min-height: 100vh;
         }
+ /* =========================
+           FLOATING HEART BACKGROUND
+        ========================= */
 
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            bottom: -50px;
+
+            color: #c94f7c;
+            font-size: 35px;
+            opacity: 0.6;
+
+            animation: floatUp 10s linear infinite;
+        }
+
+        .floating-hearts span:nth-child(1) {
+            left: 8%;
+            animation-delay: 0s;
+            font-size: 30px;
+        }
+
+        .floating-hearts span:nth-child(2) {
+            left: 20%;
+            animation-delay: 2s;
+            font-size: 22px;
+        }
+
+        .floating-hearts span:nth-child(3) {
+            left: 35%;
+            animation-delay: 4s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(4) {
+            left: 50%;
+            animation-delay: 1s;
+            font-size: 28px;
+        }
+
+        .floating-hearts span:nth-child(5) {
+            left: 65%;
+            animation-delay: 5s;
+            font-size: 35px;
+        }
+
+        .floating-hearts span:nth-child(6) {
+            left: 75%;
+            animation-delay: 3s;
+            font-size: 25px;
+        }
+
+        .floating-hearts span:nth-child(7) {
+            left: 88%;
+            animation-delay: 6s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(8) {
+            left: 45%;
+            animation-delay: 7s;
+            font-size: 20px;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-400px) rotate(20deg);
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(-20deg);
+                opacity: 0;
+            }
 
         /* =========================
            HEADER
@@ -287,7 +379,20 @@ nav a:hover {
 
 
 <body>
+ <!-- =========================
+         FLOATING HEARTS
+    ========================= -->
 
+    <div class="floating-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
 
     <header>
         <h2 class="logo">My Portfolio</h2>
