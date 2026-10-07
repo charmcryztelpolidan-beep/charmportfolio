@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quizzes - My Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Cute Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: #fffafa;
+            color: #222;
+            cursor: none;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           CUSTOM CURSOR
+        ========================= */
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+
+            background-color: #f3a9c2;
+            border: 3px solid white;
+            border-radius: 50%;
+
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+
+            z-index: 10000;
+
+            box-shadow:
+                0 0 8px #f3a9c2,
+                0 0 18px rgba(243, 169, 194, 0.8);
+
+            transition:
+                width 0.15s ease,
+                height 0.15s ease;
+        }
+
+        .custom-cursor.hover {
+            width: 30px;
+            height: 30px;
+
+            background-color: rgba(243, 169, 194, 0.6);
+
+            box-shadow:
+                0 0 10px #f3a9c2,
+                0 0 25px #f3a9c2;
+        }
+
+
+        /* =========================
+           CURSOR TRAIL
+        ========================= */
+
+        #cursorTrail {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 9998;
+        }
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
+        .floating-hearts {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+
+            bottom: -50px;
+
+            color: #e88aaa;
+
+            font-size: 35px;
+
+            opacity: 0.45;
+
+            animation: floatUp 10s linear infinite;
+        }
+
+        .floating-hearts span:nth-child(1) {
+            left: 8%;
+            animation-delay: 0s;
+            font-size: 30px;
+        }
+
+        .floating-hearts span:nth-child(2) {
+            left: 20%;
+            animation-delay: 2s;
+            font-size: 22px;
+        }
+
+        .floating-hearts span:nth-child(3) {
+            left: 35%;
+            animation-delay: 4s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(4) {
+            left: 50%;
+            animation-delay: 1s;
+            font-size: 28px;
+        }
+
+        .floating-hearts span:nth-child(5) {
+            left: 65%;
+            animation-delay: 5s;
+            font-size: 35px;
+        }
+
+        .floating-hearts span:nth-child(6) {
+            left: 75%;
+            animation-delay: 3s;
+            font-size: 25px;
+        }
+
+        .floating-hearts span:nth-child(7) {
+            left: 88%;
+            animation-delay: 6s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(8) {
+            left: 45%;
+            animation-delay: 7s;
+            font-size: 20px;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.45;
+            }
+
+            50% {
+                transform:
+                    translateY(-400px)
+                    rotate(20deg);
+            }
+
+            100% {
+                transform:
+                    translateY(-100vh)
+                    rotate(-20deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: relative;
+
+            z-index: 10;
+
+            background-color: #fce4ec;
+
+            padding: 30px 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+
+            font-family: "Comic Neue", sans-serif;
+
+            font-size: 35px;
+        }
+
+
+        /* =========================
+           NAVIGATION - HOME ONLY
+        ========================= */
+
+        nav {
+            display: flex;
+
+            gap: 15px;
+
+            margin-left: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: #222;
+
+            border: 2px solid #f3a9c2;
+
+            border-radius: 10px;
+
+            padding: 12px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-family: "Comic Neue", sans-serif;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            background-color: white;
+
+            transition: 0.3s ease;
+
+            cursor: none;
+        }
+
+        nav a:hover {
+            background-color: #ffe0eb;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 5px 15px rgba(201, 79, 124, 0.2);
+        }
+
+        nav a i {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background-color: #f3a9c2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: transparent;
+
+            font-size: 0;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+        main h2 {
+            font-family: "Comic Neue", sans-serif;
+
+            font-size: 35px;
+
+            margin-bottom: 35px;
+
+            color: #292929;
+        }
+
+
+        /* =========================
+           QUIZ CONTAINER
+        ========================= */
+
+        #quizzesContainer {
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 300px));
+
+            gap: 25px;
+
+            justify-content: center;
+
+            align-items: start;
+        }
+
+
+        /* =========================
+           QUIZ CARD
+        ========================= */
+
+        .quiz-card {
+            position: relative;
+
+            border: 2px solid #f3a9c2;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            background-color: white;
+
+            text-align: left;
+
+            box-shadow:
+                0 8px 20px rgba(201, 79, 124, 0.15);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            cursor: none;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 25px rgba(201, 79, 124, 0.25);
+        }
+
+
+        /* =========================
+           QUIZ IMAGE
+        ========================= */
+
+        .quiz-image-container {
+            width: 100%;
+
+            height: 200px;
+
+            background-color: white;
+
+            overflow: hidden;
+
+            cursor: none;
+        }
+
+        .quiz-image-container img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .quiz-card:hover
+        .quiz-image-container img {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           QUIZ INFORMATION
+        ========================= */
+
+        .quiz-info {
+            padding: 12px 14px 14px;
+
+            background-color: #f8d8e5;
+
+            color: #333;
+        }
+
+        .quiz-name {
+            font-family: "Comic Neue", sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 3px;
+
+            color: #333;
+        }
+
+
+        /* SCORE AND DATE */
+
+        .quiz-details {
+            font-family: "Comic Neue", sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: #e88aaa;
+        }
+
+        .quiz-details .score {
+            color: #e88aaa;
+        }
+
+        .quiz-details .date {
+            color: #e88aaa;
+        }
+
+
+        /* =========================
+           IMAGE MODAL
+        ========================= */
+
+        .image-modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 20000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-color:
+                rgba(20, 10, 25, 0.88);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .image-modal.show {
+            display: flex;
+        }
+
+
+        /* =========================
+           MODAL CONTENT
+        ========================= */
+
+        .modal-content {
+            position: relative;
+
+            max-width: 900px;
+
+            max-height: 90vh;
+
+            background-color: white;
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 0 40px rgba(243, 169, 194, 0.5);
+
+            animation:
+                popup 0.3s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content img {
+            display: block;
+
+            max-width: 100%;
+
+            max-height: 75vh;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           MODAL DETAILS
+        ========================= */
+
+        .modal-details {
+            text-align: center;
+
+            font-family: "Comic Neue", sans-serif;
+
+            padding-top: 12px;
+
+            color: #333;
+        }
+
+        .modal-details h3 {
+            margin: 0 0 5px;
+
+            font-size: 22px;
+
+            font-family: "Comic Neue", sans-serif;
+        }
+
+        .modal-details p {
+            margin: 0;
+
+            font-size: 16px;
+
+            font-family: "Comic Neue", sans-serif;
+
+            font-weight: 700;
+
+            color: #e88aaa;
+        }
+
+
+        /* =========================
+           CLOSE BUTTON
+        ========================= */
+
+        .close-modal {
+            position: absolute;
+
+            top: -15px;
+
+            right: -15px;
+
+            width: 38px;
+
+            height: 38px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: #f3a9c2;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: none;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .close-modal:hover {
+            background-color: #df789d;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 25px;
+
+                text-align: center;
+
+                padding: 25px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                margin-left: 0;
+            }
+
+            nav a {
+                font-size: 16px;
+
+                padding: 10px 15px;
+            }
+
+            nav a i {
+                width: 35px;
+                height: 35px;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            main h2 {
+                font-size: 30px;
+            }
+
+            #quizzesContainer {
+                grid-template-columns: 1fr;
+
+                max-width: 400px;
+            }
+
+            .quiz-image-container {
+                height: 220px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+
+                padding: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         FLOATING HEARTS
+    ========================= -->
+
+    <div class="floating-hearts">
+
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+         HOME ONLY
+    ========================= -->
+
+    <header>
+
+        <h1></h1>
+
+        <nav>
+
+            <a href="index.html" onclick="goHome(event)">
+
+                <i class="fa-solid fa-house"></i>
+
+                Home
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main>
+
+        <h2>
+            My Quizzes
+        </h2>
+
+
+        <div id="quizzesContainer">
+
+
+            <!-- =========================
+                 QUIZ 1
+            ========================= -->
+
+            <div
+                class="quiz-card"
+                onclick="openQuiz(
+                    'Image.webp/2a33d924-1cdf-4102-9f0e-dae69878b9f5.jpg',
+                    'Quiz 1',
+                    'Score: 17/20',
+                    'August 25, 2026'
+                )">
+
+
+                <!-- QUIZ IMAGE -->
+
+                <div class="quiz-image-container">
+
+                    <img
+                        src="Image.webp/2a33d924-1cdf-4102-9f0e-dae69878b9f5.jpg"
+                        alt="Quiz 1">
+
+                </div>
+
+
+                <!-- QUIZ INFORMATION -->
+
+                <div class="quiz-info">
+
+                    <div class="quiz-name">
+
+                        Quiz 1
+
+                    </div>
+
+
+                    <div class="quiz-details">
+
+                        <span class="score">
+
+                            Score: 17/20
+
+                        </span>
+
+                        •
+
+                        <span class="date">
+
+                            August 25, 2026
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         IMAGE MODAL
+    ========================= -->
+
+    <div
+        class="image-modal"
+        id="imageModal">
+
+
+        <div class="modal-content">
+
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                class="close-modal"
+                onclick="closeQuiz()">
+
+                ×
+
+            </button>
+
+
+            <!-- LARGE IMAGE -->
+
+            <img
+                id="modalImage"
+                src=""
+                alt="Quiz Image">
+
+
+            <!-- QUIZ DETAILS -->
+
+            <div class="modal-details">
+
+                <h3 id="modalTitle">
+
+                    Quiz 1
+
+                </h3>
+
+
+                <p>
+
+                    <span id="modalScore"></span>
+
+                    &nbsp; • &nbsp;
+
+                    <span id="modalDate"></span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CURSOR TRAIL
+    ========================= -->
+
+    <canvas id="cursorTrail"></canvas>
+
+
+    <!-- =========================
+         CUSTOM CURSOR
+    ========================= -->
+
+    <div class="custom-cursor"></div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* ==================================================
+           HOME BUTTON
+        ================================================== */
+
+        function goHome(event) {
+
+            event.preventDefault();
+
+            /*
+             * Dahil ang quizzes.html ay nasa iframe
+             * ng index.html, window.top ang gagamitin.
+             *
+             * Babalik ito sa mismong main Home page.
+             */
+
+            if (window.top !== window.self) {
+
+                window.top.location.href = "index.html";
+
+            } else {
+
+                window.location.href = "index.html";
+
+            }
+
+        }
+
+
+        /* =========================
+           IMAGE MODAL
+        ========================= */
+
+        const modal =
+            document.getElementById("imageModal");
+
+        const modalImage =
+            document.getElementById("modalImage");
+
+        const modalTitle =
+            document.getElementById("modalTitle");
+
+        const modalScore =
+            document.getElementById("modalScore");
+
+        const modalDate =
+            document.getElementById("modalDate");
+
+
+        function openQuiz(
+            image,
+            title,
+            score,
+            date
+        ) {
+
+            modalImage.src = image;
+
+            modalTitle.textContent = title;
+
+            modalScore.textContent = score;
+
+            modalDate.textContent = date;
+
+            modal.classList.add("show");
+
+        }
+
+
+        function closeQuiz() {
+
+            modal.classList.remove("show");
+
+        }
+
+
+        /* Close when clicking outside */
+
+        modal.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === modal) {
+
+                    closeQuiz();
+
+                }
+
+            }
+        );
+
+
+        /* Close using ESC */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    closeQuiz();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           CUSTOM CURSOR
+        ========================= */
+
+        const cursor =
+            document.querySelector(".custom-cursor");
+
+        const canvas =
+            document.getElementById("cursorTrail");
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        /* =========================
+           CANVAS SIZE
+        ========================= */
+
+        function resizeCanvas() {
+
+            canvas.width =
+                window.innerWidth;
+
+            canvas.height =
+                window.innerHeight;
+
+        }
+
+        resizeCanvas();
+
+
+        /* =========================
+           MOUSE POSITION
+        ========================= */
+
+        let mouseX =
+            window.innerWidth / 2;
+
+        let mouseY =
+            window.innerHeight / 2;
+
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+                mouseX =
+                    event.clientX;
+
+                mouseY =
+                    event.clientY;
+
+
+                cursor.style.left =
+                    mouseX + "px";
+
+                cursor.style.top =
+                    mouseY + "px";
+
+
+                createHeart(
+                    mouseX,
+                    mouseY
+                );
+
+            }
+        );
+
+
+        /* =========================
+           HEART PARTICLES
+        ========================= */
+
+        let hearts = [];
+
+
+        function createHeart(x, y) {
+
+            hearts.push({
+
+                x: x,
+
+                y: y,
+
+                size:
+                    Math.random() * 10 + 8,
+
+                speedY:
+                    Math.random() * -1.5 - 0.5,
+
+                speedX:
+                    (Math.random() - 0.5) * 1.5,
+
+                opacity: 1,
+
+                rotation:
+                    Math.random() * 360
+
+            });
+
+
+            if (hearts.length > 45) {
+
+                hearts.shift();
+
+            }
+
+        }
+
+
+        /* =========================
+           DRAW HEART
+        ========================= */
+
+        function drawHeart(
+            x,
+            y,
+            size,
+            rotation,
+            opacity
+        ) {
+
+            ctx.save();
+
+            ctx.translate(
+                x,
+                y
+            );
+
+            ctx.rotate(
+                rotation *
+                Math.PI /
+                180
+            );
+
+            ctx.globalAlpha =
+                opacity;
+
+            ctx.fillStyle =
+                "#f3a9c2";
+
+            ctx.shadowBlur =
+                12;
+
+            ctx.shadowColor =
+                "#f3a9c2";
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                0,
+                size * 0.3
+            );
+
+            ctx.bezierCurveTo(
+
+                -size,
+                -size * 0.3,
+
+                -size * 0.6,
+                -size,
+
+                0,
+                -size * 0.35
+
+            );
+
+            ctx.bezierCurveTo(
+
+                size * 0.6,
+                -size,
+
+                size,
+                -size * 0.3,
+
+                0,
+                size * 0.3
+
+            );
+
+            ctx.fill();
+
+            ctx.restore();
+
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        function animate() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            for (
+                let i = hearts.length - 1;
+                i >= 0;
+                i--
+            ) {
+
+                const heart =
+                    hearts[i];
+
+
+                heart.x +=
+                    heart.speedX;
+
+                heart.y +=
+                    heart.speedY;
+
+                heart.opacity -=
+                    0.015;
+
+                heart.size *=
+                    0.995;
+
+
+                drawHeart(
+                    heart.x,
+                    heart.y,
+                    heart.size,
+                    heart.rotation,
+                    heart.opacity
+                );
+
+
+                if (
+                    heart.opacity <= 0
+                ) {
+
+                    hearts.splice(
+                        i,
+                        1
+                    );
+
+                }
+
+            }
+
+
+            requestAnimationFrame(
+                animate
+            );
+
+        }
+
+
+        animate();
+
+
+        /* =========================
+           RESIZE
+        ========================= */
+
+        window.addEventListener(
+            "resize",
+            function() {
+
+                resizeCanvas();
+
+            }
+        );
+
+
+        /* =========================
+           CURSOR HOVER
+        ========================= */
+
+        const clickableElements =
+            document.querySelectorAll(
+                "a, button, .quiz-card"
+            );
+
+
+        clickableElements.forEach(
+            function(element) {
+
+                element.addEventListener(
+                    "mouseenter",
+                    function() {
+
+                        cursor.classList.add(
+                            "hover"
+                        );
+
+                    }
+                );
+
+
+                element.addEventListener(
+                    "mouseleave",
+                    function() {
+
+                        cursor.classList.remove(
+                            "hover"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
