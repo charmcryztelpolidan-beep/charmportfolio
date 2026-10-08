@@ -1,608 +1,959 @@
-<!DOCTYPE html> <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exam - My Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Cute Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: #fffafa;
+            color: #222;
+            cursor: none;
+            min-height: 100vh;
+        }
+
+        /* ========================= CUSTOM CURSOR ========================= */
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #f3a9c2;
+            border: 3px solid white;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+
+            box-shadow:
+                0 0 8px #f3a9c2,
+                0 0 18px rgba(243, 169, 194, 0.8);
+
+            transition:
+                width 0.15s ease,
+                height 0.15s ease;
+        }
+
+        .custom-cursor.hover {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(243, 169, 194, 0.6);
+
+            box-shadow:
+                0 0 10px #f3a9c2,
+                0 0 25px #f3a9c2;
+        }
+
+        /* ========================= CURSOR TRAIL ========================= */
+
+        #cursorTrail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* ========================= FLOATING HEARTS ========================= */
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            bottom: -50px;
+            color: #e88aaa;
+            font-size: 35px;
+            opacity: 0.45;
+            animation: floatUp 10s linear infinite;
+        }
+
+        .floating-hearts span:nth-child(1) {
+            left: 8%;
+            animation-delay: 0s;
+            font-size: 30px;
+        }
+
+        .floating-hearts span:nth-child(2) {
+            left: 20%;
+            animation-delay: 2s;
+            font-size: 22px;
+        }
+
+        .floating-hearts span:nth-child(3) {
+            left: 35%;
+            animation-delay: 4s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(4) {
+            left: 50%;
+            animation-delay: 1s;
+            font-size: 28px;
+        }
+
+        .floating-hearts span:nth-child(5) {
+            left: 65%;
+            animation-delay: 5s;
+            font-size: 35px;
+        }
+
+        .floating-hearts span:nth-child(6) {
+            left: 75%;
+            animation-delay: 3s;
+            font-size: 25px;
+        }
+
+        .floating-hearts span:nth-child(7) {
+            left: 88%;
+            animation-delay: 6s;
+            font-size: 40px;
+        }
+
+        .floating-hearts span:nth-child(8) {
+            left: 45%;
+            animation-delay: 7s;
+            font-size: 20px;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.45;
+            }
+
+            50% {
+                transform: translateY(-400px) rotate(20deg);
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(-20deg);
+                opacity: 0;
+            }
+        }
+
+        /* ========================= HEADER ========================= */
+
+        header {
+            position: relative;
+            z-index: 10;
+            background-color: #fce4ec;
+            padding: 30px 50px;
+            height: 40px;
+        }
+
+        /* ========================= MAIN ========================= */
+
+        main {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        main h2 {
+            font-family: "Comic Neue", sans-serif;
+            font-size: 35px;
+            margin-bottom: 35px;
+            color: #292929;
+        }
+
+        /* ========================= EXAMS CONTAINER ========================= */
+
+        #examsContainer {
+            max-width: 1100px;
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 300px));
+
+            gap: 25px;
+
+            justify-content: center;
+            align-items: start;
+        }
+
+        /* ========================= EXAM CARD ========================= */
+
+        .exam-card {
+            position: relative;
+
+            border: 2px solid #f3a9c2;
+            border-radius: 15px;
+            overflow: hidden;
+
+            background-color: white;
+            text-align: left;
+
+            box-shadow:
+                0 8px 20px rgba(201, 79, 124, 0.15);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
 
-<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            cursor: none;
+        }
 
-<title>Exam - My Portfolio</title>
+        .exam-card:hover {
+            transform: translateY(-6px);
 
-<!-- Font Awesome --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            box-shadow:
+                0 12px 25px rgba(201, 79, 124, 0.25);
+        }
 
-<!-- Cute Font --> <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+        /* ========================= EXAM IMAGE ========================= */
 
-<style>
+        .exam-image-container {
+            width: 100%;
+            height: 200px;
+            background-color: white;
+            overflow: hidden;
+            cursor: none;
+        }
 
-/* ========================= GENERAL ========================= */
+        .exam-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
 
-* { box-sizing: border-box; }
+            transition:
+                transform 0.4s ease;
+        }
 
-html { scroll-behavior: smooth; }
+        .exam-card:hover .exam-image-container img {
+            transform: scale(1.05);
+        }
 
-body { margin: 0; font-family: Georgia, serif; background-color: #fffafa; color: #222; cursor: none; min-height: 100vh; }
+        /* ========================= EXAM INFORMATION ========================= */
 
-/* ========================= CUSTOM CURSOR ========================= */
+        .exam-info {
+            padding: 12px 14px 14px;
+            background-color: #f8d8e5;
+            color: #333;
+        }
 
-.custom-cursor { position: fixed;
+        .exam-name {
+            font-family: "Comic Neue", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #333;
+        }
 
-width: 20px; height: 20px;
+        .exam-details {
+            font-family: "Comic Neue", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #e88aaa;
+        }
 
-background-color: #f3a9c2;
+        .exam-details .score,
+        .exam-details .date {
+            color: #e88aaa;
+        }
 
-border: 3px solid white;
+        /* ========================= IMAGE MODAL ========================= */
 
-border-radius: 50%;
+        .image-modal {
+            display: none;
 
-pointer-events: none;
+            position: fixed;
 
-transform: translate(-50%, -50%);
+            z-index: 20000;
 
-z-index: 10000;
+            left: 0;
+            top: 0;
 
-box-shadow: 0 0 8px #f3a9c2, 0 0 18px rgba(243, 169, 194, 0.8);
+            width: 100%;
+            height: 100%;
 
-transition: width 0.15s ease, height 0.15s ease; }
+            background-color: rgba(20, 10, 25, 0.88);
 
-.custom-cursor.hover { width: 30px; height: 30px;
+            align-items: center;
+            justify-content: center;
 
-background-color: rgba(243, 169, 194, 0.6);
+            padding: 30px;
+        }
 
-box-shadow: 0 0 10px #f3a9c2, 0 0 25px #f3a9c2; }
+        .image-modal.show {
+            display: flex;
+        }
 
-/* ========================= CURSOR TRAIL ========================= */
+        .modal-content {
+            position: relative;
 
-#cursorTrail { position: fixed;
+            max-width: 900px;
+            max-height: 90vh;
 
-top: 0; left: 0;
+            background-color: white;
 
-width: 100%; height: 100%;
+            padding: 15px;
 
-pointer-events: none;
+            border-radius: 15px;
 
-z-index: 9998; }
+            box-shadow:
+                0 0 40px rgba(243, 169, 194, 0.5);
 
-/* ========================= FLOATING HEARTS ========================= */
+            animation: popup 0.3s ease;
+        }
 
-.floating-hearts { position: fixed;
+        @keyframes popup {
 
-top: 0; left: 0;
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
 
-width: 100%; height: 100%;
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 
-overflow: hidden;
+        .modal-content img {
+            display: block;
 
-pointer-events: none;
+            max-width: 100%;
+            max-height: 75vh;
 
-z-index: 0; }
+            object-fit: contain;
 
-.floating-hearts span { position: absolute;
+            border-radius: 8px;
 
-bottom: -50px;
+            margin: auto;
+        }
 
-color: #e88aaa;
+        /* ========================= MODAL DETAILS ========================= */
 
-font-size: 35px;
+        .modal-details {
+            text-align: center;
 
-opacity: 0.45;
+            font-family: "Comic Neue", sans-serif;
 
-animation: floatUp 10s linear infinite; }
+            padding-top: 12px;
 
-.floating-hearts span:nth-child(1) { left: 8%; animation-delay: 0s; font-size: 30px; }
+            color: #333;
+        }
 
-.floating-hearts span:nth-child(2) { left: 20%; animation-delay: 2s; font-size: 22px; }
+        .modal-details h3 {
+            margin: 0 0 5px;
 
-.floating-hearts span:nth-child(3) { left: 35%; animation-delay: 4s; font-size: 40px; }
+            font-size: 22px;
 
-.floating-hearts span:nth-child(4) { left: 50%; animation-delay: 1s; font-size: 28px; }
+            font-family: "Comic Neue", sans-serif;
+        }
 
-.floating-hearts span:nth-child(5) { left: 65%; animation-delay: 5s; font-size: 35px; }
+        .modal-details p {
+            margin: 0;
 
-.floating-hearts span:nth-child(6) { left: 75%; animation-delay: 3s; font-size: 25px; }
+            font-size: 16px;
 
-.floating-hearts span:nth-child(7) { left: 88%; animation-delay: 6s; font-size: 40px; }
+            font-family: "Comic Neue", sans-serif;
 
-.floating-hearts span:nth-child(8) { left: 45%; animation-delay: 7s; font-size: 20px; }
+            font-weight: 700;
 
-@keyframes floatUp {
+            color: #e88aaa;
+        }
 
-0% { transform: translateY(0) rotate(0deg);
+        /* ========================= MODAL X ========================= */
 
-opacity: 0; }
+        .close-modal {
+            position: absolute;
 
-20% { opacity: 0.45; }
+            top: -15px;
+            right: -15px;
 
-50% { transform: translateY(-400px) rotate(20deg); }
+            width: 38px;
+            height: 38px;
 
-100% { transform: translateY(-100vh) rotate(-20deg);
+            border: none;
+            border-radius: 50%;
 
-opacity: 0; } }
+            background-color: #f3a9c2;
 
-/* ========================= HEADER ========================= */
+            color: white;
 
-header { position: relative;
+            font-size: 22px;
+            font-weight: bold;
 
-z-index: 10;
+            cursor: none;
 
-background-color: #fce4ec;
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.25);
+        }
 
-padding: 30px 50px;
+        .close-modal:hover {
+            background-color: #df789d;
+        }
 
-display: flex;
+        /* ========================= MOBILE ========================= */
 
-align-items: center;
+        @media (max-width: 800px) {
 
-justify-content: space-between; }
+            header {
+                padding: 25px;
+                height: 40px;
+            }
 
-header h1 { margin: 0;
+            main {
+                padding: 40px 15px;
+            }
 
-font-family: "Comic Neue", sans-serif;
+            main h2 {
+                font-size: 30px;
+            }
 
-font-size: 35px; }
+            #examsContainer {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
 
-/* ========================= NAVIGATION - HOME ONLY SAME AS QUIZZES.HTML ========================= */
+            .exam-image-container {
+                height: 220px;
+            }
 
-nav { display: flex;
+            .modal-content {
+                max-width: 95%;
+                padding: 10px;
+            }
+        }
 
-gap: 15px;
-
-margin-left: auto; }
-
-nav a { text-decoration: none;
-
-color: #222;
-
-border: 2px solid #f3a9c2;
-
-border-radius: 10px;
-
-padding: 12px 25px;
-
-display: flex;
-
-align-items: center;
-
-gap: 12px;
-
-font-family: "Comic Neue", sans-serif;
-
-font-size: 22px;
-
-font-weight: 700;
-
-background-color: white;
-
-transition: 0.3s ease;
-
-cursor: none; }
-
-nav a:hover { background-color: #ffe0eb;
-
-transform: translateY(-3px);
-
-box-shadow: 0 5px 15px rgba(201, 79, 124, 0.2); }
-
-nav a i { width: 45px;
-
-height: 45px;
-
-border-radius: 50%;
-
-background-color: #f3a9c2;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-color: transparent;
-
-font-size: 0;
-
-flex-shrink: 0; }
-
-/* ========================= MAIN ========================= */
-
-main { position: relative;
-
-z-index: 2;
-
-text-align: center;
-
-padding: 60px 20px; }
-
-main h2 { font-family: "Comic Neue", sans-serif;
-
-font-size: 35px;
-
-margin-bottom: 35px;
-
-color: #292929; }
-
-/* ========================= EXAMS CONTAINER ========================= */
-
-#examsContainer { max-width: 850px;
-
-margin: 0 auto;
-
-display: flex;
-
-flex-direction: column;
-
-gap: 25px; }
-
-/* ========================= EXAM CARD ========================= */
-
-.exam-card { border: 2px solid #f3a9c2;
-
-border-radius: 15px;
-
-padding: 20px;
-
-background-color: rgba(255, 255, 255, 0.95);
-
-text-align: center;
-
-box-shadow: 0 8px 20px rgba(201, 79, 124, 0.12);
-
-transition: 0.3s ease; }
-
-.exam-card:hover { transform: translateY(-5px);
-
-box-shadow: 0 12px 25px rgba(201, 79, 124, 0.18); }
-
-/* ========================= EXAM NAME ========================= */
-
-.file-name { font-family: "Comic Neue", sans-serif;
-
-font-size: 20px;
-
-font-weight: bold;
-
-margin-bottom: 15px;
-
-color: #333; }
-
-/* ========================= FILE LINK ========================= */
-
-.file-link { display: inline-block;
-
-text-decoration: none;
-
-color: white;
-
-background-color: #d96b91;
-
-padding: 10px 20px;
-
-border-radius: 8px;
-
-font-family: "Comic Neue", sans-serif;
-
-transition: 0.3s ease;
-
-cursor: none; }
-
-.file-link:hover { background-color: #b83f68;
-
-transform: scale(1.05); }
-
-/* ========================= MOBILE ========================= */
-
-@media (max-width: 800px) {
-
-header { flex-direction: column;
-
-gap: 25px;
-
-text-align: center;
-
-padding: 25px; }
-
-nav { flex-wrap: wrap;
-
-justify-content: center;
-
-margin-left: 0; }
-
-nav a { font-size: 16px;
-
-padding: 10px 15px; }
-
-nav a i { width: 35px;
-
-height: 35px; }
-
-main { padding: 40px 15px; }
-
-main h2 { font-size: 30px; }
-
-.exam-card { padding: 15px; }
-
-}
-
-</style>
-
+    </style>
 </head>
 
 <body>
 
-<!-- ========================= FLOATING HEARTS ========================= -->
+    <!-- ========================= FLOATING HEARTS ========================= -->
 
-<div class="floating-hearts">
+    <div class="floating-hearts">
 
-<span>♡</span> <span>♡</span> <span>♡</span> <span>♡</span> <span>♡</span> <span>♡</span> <span>♡</span> <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
 
-</div>
+    </div>
 
-<!-- ========================= HEADER HOME ONLY ========================= -->
 
-<header>
+    <!-- ========================= HEADER ========================= -->
 
-<h1></h1>
+    <header></header>
 
-<nav>
 
-<!-- SAME HOME BUTTON AS QUIZZES.HTML -->
+    <!-- ========================= MAIN ========================= -->
 
-<a href="index.html" onclick="goHome(event)">
+    <main>
 
-<i class="fa-solid fa-house"></i>
+        <h2>My Exams</h2>
 
-Home
+        <div id="examsContainer">
 
-</a>
 
-</nav>
+            <!-- ========================= MIDTERM EXAM ========================= -->
 
-</header>
+            <div
+                class="exam-card"
+                onclick="openExam(
+                    'Exam/db8350ce-a204-4db0-8412-48908ea52e12.jpg',
+                    'Midterm Exam',
+                    'Score: 67/50',
+                    'October 06, 2026'
+                )">
 
-<!-- ========================= MAIN ========================= -->
+                <div class="exam-image-container">
 
-<main>
+                    <img
+                        src="Exam/db8350ce-a204-4db0-8412-48908ea52e12.jpg"
+                        alt="Midterm Exam">
 
-<h2> My Exams </h2>
+                </div>
 
-<div id="examsContainer">
+                <div class="exam-info">
 
-<!-- ========================= ADD YOUR EXAMS HERE ========================= -->
+                    <div class="exam-name">
+                        Midterm Exam
+                    </div>
 
-<!--
+                    <div class="exam-details">
 
-Example:
+                        <span class="score">
+                            Score: 67/70
+                        </span>
 
-<div class="exam-card">
+                        •
 
-<div class="file-name"> Exam 1 </div>
+                        <span class="date">
+                            October 06, 2026
+                        </span>
 
-<a href="exams/exam1.pdf" target="_blank" class="file-link">
+                    </div>
 
-Open Exam
+                </div>
 
-</a>
+            </div>
 
-</div>
 
--->
+        </div>
 
-</div>
+    </main>
 
-</main>
 
-<!-- ========================= CURSOR TRAIL ========================= -->
+    <!-- ========================= IMAGE MODAL ========================= -->
 
-<canvas id="cursorTrail"></canvas>
+    <div
+        class="image-modal"
+        id="imageModal">
 
-<!-- ========================= CUSTOM CURSOR ========================= -->
+        <div class="modal-content">
 
-<div class="custom-cursor"></div>
+            <button
+                class="close-modal"
+                onclick="closeExam()">
+                ×
+            </button>
 
-<!-- ========================= JAVASCRIPT ========================= -->
+            <img
+                id="modalImage"
+                src=""
+                alt="Exam Image">
 
-<script>
+            <div class="modal-details">
 
-/* ========================= HOME BUTTON ========================= */
+                <h3 id="modalTitle">
+                    Midterm Exam
+                </h3>
 
-function goHome(event) {
+                <p>
 
-event.preventDefault();
+                    <span id="modalScore"></span>
 
-/* * Kapag ang exam.html ay nasa iframe * ng index.html, babalik sa main Home page. */
+                    &nbsp; • &nbsp;
 
-if (window.top !== window.self) {
+                    <span id="modalDate"></span>
 
-window.top.location.href = "index.html";
+                </p>
 
-} else {
+            </div>
 
-window.location.href = "index.html";
+        </div>
 
-}
+    </div>
 
-}
 
-/* ========================= CUSTOM CURSOR ========================= */
+    <!-- ========================= CURSOR TRAIL ========================= -->
 
-const cursor = document.querySelector(".custom-cursor");
+    <canvas id="cursorTrail"></canvas>
 
-const canvas = document.getElementById("cursorTrail");
 
-const ctx = canvas.getContext("2d");
+    <!-- ========================= CUSTOM CURSOR ========================= -->
 
-/* ========================= CANVAS SIZE ========================= */
+    <div class="custom-cursor"></div>
 
-function resizeCanvas() {
 
-canvas.width = window.innerWidth;
+    <script>
 
-canvas.height = window.innerHeight;
+        /* ========================= IMAGE MODAL ========================= */
 
-}
+        const modal =
+            document.getElementById("imageModal");
 
-resizeCanvas();
+        const modalImage =
+            document.getElementById("modalImage");
 
-/* ========================= MOUSE POSITION ========================= */
+        const modalTitle =
+            document.getElementById("modalTitle");
 
-let mouseX = window.innerWidth / 2;
+        const modalScore =
+            document.getElementById("modalScore");
 
-let mouseY = window.innerHeight / 2;
+        const modalDate =
+            document.getElementById("modalDate");
 
-document.addEventListener( "mousemove", function(event) {
 
-mouseX = event.clientX;
+        function openExam(
+            image,
+            title,
+            score,
+            date
+        ) {
 
-mouseY = event.clientY;
+            modalImage.src = image;
 
-cursor.style.left = mouseX + "px";
+            modalTitle.textContent = title;
 
-cursor.style.top = mouseY + "px";
+            modalScore.textContent = score;
 
-createHeart( mouseX, mouseY );
+            modalDate.textContent = date;
 
-} );
+            modal.classList.add("show");
 
-/* ========================= HEART PARTICLES ========================= */
+        }
 
-let hearts = [];
 
-function createHeart(x, y) {
+        function closeExam() {
 
-hearts.push({
+            modal.classList.remove("show");
 
-x: x,
+        }
 
-y: y,
 
-size: Math.random() * 10 + 8,
+        /* ========================= CLOSE MODAL OUTSIDE ========================= */
 
-speedY: Math.random() * -1.5 - 0.5,
+        modal.addEventListener(
+            "click",
+            function(event) {
 
-speedX: (Math.random() - 0.5) * 1.5,
+                if (event.target === modal) {
 
-opacity: 1,
+                    closeExam();
 
-rotation: Math.random() * 360
+                }
 
-});
+            }
+        );
 
-if (hearts.length > 45) {
 
-hearts.shift();
+        /* ========================= ESC ========================= */
 
-}
+        document.addEventListener(
+            "keydown",
+            function(event) {
 
-}
+                if (event.key === "Escape") {
 
-/* ========================= DRAW HEART ========================= */
+                    closeExam();
 
-function drawHeart( x, y, size, rotation, opacity ) {
+                }
 
-ctx.save();
+            }
+        );
 
-ctx.translate( x, y );
 
-ctx.rotate( rotation * Math.PI / 180 );
+        /* ========================= CUSTOM CURSOR ========================= */
 
-ctx.globalAlpha = opacity;
+        const cursor =
+            document.querySelector(".custom-cursor");
 
-ctx.fillStyle = "#f3a9c2";
+        const canvas =
+            document.getElementById("cursorTrail");
 
-ctx.shadowBlur = 12;
+        const ctx =
+            canvas.getContext("2d");
 
-ctx.shadowColor = "#f3a9c2";
 
-ctx.beginPath();
+        /* ========================= CANVAS SIZE ========================= */
 
-ctx.moveTo( 0, size * 0.3 );
+        function resizeCanvas() {
 
-ctx.bezierCurveTo(
+            canvas.width =
+                window.innerWidth;
 
--size, -size * 0.3,
+            canvas.height =
+                window.innerHeight;
 
--size * 0.6, -size,
+        }
 
-0, -size * 0.35
+        resizeCanvas();
 
-);
 
-ctx.bezierCurveTo(
+        /* ========================= MOUSE POSITION ========================= */
 
-size * 0.6, -size,
+        let mouseX =
+            window.innerWidth / 2;
 
-size, -size * 0.3,
+        let mouseY =
+            window.innerHeight / 2;
 
-0, size * 0.3
 
-);
+        document.addEventListener(
+            "mousemove",
+            function(event) {
 
-ctx.fill();
+                mouseX = event.clientX;
 
-ctx.restore();
+                mouseY = event.clientY;
 
-}
+                cursor.style.left =
+                    mouseX + "px";
 
-/* ========================= ANIMATION ========================= */
+                cursor.style.top =
+                    mouseY + "px";
 
-function animate() {
+                createHeart(
+                    mouseX,
+                    mouseY
+                );
 
-ctx.clearRect( 0, 0, canvas.width, canvas.height );
+            }
+        );
 
-for ( let i = hearts.length - 1; i >= 0; i-- ) {
 
-const heart = hearts[i];
+        /* ========================= HEART PARTICLES ========================= */
 
-heart.x += heart.speedX;
+        let hearts = [];
 
-heart.y += heart.speedY;
 
-heart.opacity -= 0.015;
+        function createHeart(x, y) {
 
-heart.size *= 0.995;
+            hearts.push({
 
-drawHeart( heart.x, heart.y, heart.size, heart.rotation, heart.opacity );
+                x: x,
 
-if ( heart.opacity <= 0 ) {
+                y: y,
 
-hearts.splice( i, 1 );
+                size:
+                    Math.random() * 10 + 8,
 
-}
+                speedY:
+                    Math.random() * -1.5 - 0.5,
 
-}
+                speedX:
+                    (Math.random() - 0.5) * 1.5,
 
-requestAnimationFrame( animate );
+                opacity: 1,
 
-}
+                rotation:
+                    Math.random() * 360
 
-animate();
+            });
 
-/* ========================= RESIZE ========================= */
 
-window.addEventListener( "resize", function() {
+            if (hearts.length > 45) {
 
-resizeCanvas();
+                hearts.shift();
 
-} );
+            }
 
-/* ========================= CURSOR HOVER ========================= */
+        }
 
-const clickableElements = document.querySelectorAll( "a, button, .exam-card, .file-link" );
 
-clickableElements.forEach( function(element) {
+        /* ========================= DRAW HEART ========================= */
 
-element.addEventListener( "mouseenter", function() {
+        function drawHeart(
+            x,
+            y,
+            size,
+            rotation,
+            opacity
+        ) {
 
-cursor.classList.add( "hover" );
+            ctx.save();
 
-} );
+            ctx.translate(x, y);
 
-element.addEventListener( "mouseleave", function() {
+            ctx.rotate(
+                rotation *
+                Math.PI /
+                180
+            );
 
-cursor.classList.remove( "hover" );
+            ctx.globalAlpha =
+                opacity;
 
-} );
+            ctx.fillStyle =
+                "#f3a9c2";
 
-} );
+            ctx.shadowBlur = 12;
 
-</script>
+            ctx.shadowColor =
+                "#f3a9c2";
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                0,
+                size * 0.3
+            );
+
+            ctx.bezierCurveTo(
+
+                -size,
+                -size * 0.3,
+
+                -size * 0.6,
+                -size,
+
+                0,
+                -size * 0.35
+
+            );
+
+            ctx.bezierCurveTo(
+
+                size * 0.6,
+                -size,
+
+                size,
+                -size * 0.3,
+
+                0,
+                size * 0.3
+
+            );
+
+            ctx.fill();
+
+            ctx.restore();
+
+        }
+
+
+        /* ========================= ANIMATION ========================= */
+
+        function animate() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            for (
+                let i = hearts.length - 1;
+                i >= 0;
+                i--
+            ) {
+
+                const heart =
+                    hearts[i];
+
+                heart.x +=
+                    heart.speedX;
+
+                heart.y +=
+                    heart.speedY;
+
+                heart.opacity -=
+                    0.015;
+
+                heart.size *=
+                    0.995;
+
+
+                drawHeart(
+                    heart.x,
+                    heart.y,
+                    heart.size,
+                    heart.rotation,
+                    heart.opacity
+                );
+
+
+                if (heart.opacity <= 0) {
+
+                    hearts.splice(i, 1);
+
+                }
+
+            }
+
+
+            requestAnimationFrame(
+                animate
+            );
+
+        }
+
+        animate();
+
+
+        /* ========================= RESIZE ========================= */
+
+        window.addEventListener(
+            "resize",
+            function() {
+
+                resizeCanvas();
+
+            }
+        );
+
+
+        /* ========================= CURSOR HOVER ========================= */
+
+        const clickableElements =
+            document.querySelectorAll(
+                "button, .exam-card"
+            );
+
+
+        clickableElements.forEach(
+            function(element) {
+
+                element.addEventListener(
+                    "mouseenter",
+                    function() {
+
+                        cursor.classList.add(
+                            "hover"
+                        );
+
+                    }
+                );
+
+
+                element.addEventListener(
+                    "mouseleave",
+                    function() {
+
+                        cursor.classList.remove(
+                            "hover"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
 
 </body>
 
