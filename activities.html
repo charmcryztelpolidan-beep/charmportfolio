@@ -2,22 +2,24 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Activities - My Portfolio</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
 
     <!-- Cute Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -35,12 +37,12 @@
             min-height: 100vh;
         }
 
-        /* =========================
-           CUSTOM CURSOR
-        ========================= */
+        /* CUSTOM CURSOR */
 
         .custom-cursor {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 20px;
             height: 20px;
             background-color: #f3a9c2;
@@ -48,7 +50,8 @@
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            z-index: 10000;
+            z-index: 30000;
+            opacity: 0;
 
             box-shadow:
                 0 0 8px #f3a9c2,
@@ -56,7 +59,8 @@
 
             transition:
                 width 0.15s ease,
-                height 0.15s ease;
+                height 0.15s ease,
+                opacity 0.15s ease;
         }
 
         .custom-cursor.hover {
@@ -69,9 +73,7 @@
                 0 0 25px #f3a9c2;
         }
 
-        /* =========================
-           CURSOR TRAIL
-        ========================= */
+        /* CURSOR TRAIL */
 
         #cursorTrail {
             position: fixed;
@@ -83,9 +85,7 @@
             z-index: 9998;
         }
 
-        /* =========================
-           FLOATING HEARTS
-        ========================= */
+        /* FLOATING HEARTS */
 
         .floating-hearts {
             position: fixed;
@@ -156,7 +156,6 @@
         }
 
         @keyframes floatUp {
-
             0% {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
@@ -174,12 +173,9 @@
                 transform: translateY(-100vh) rotate(-20deg);
                 opacity: 0;
             }
-
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* HEADER */
 
         header {
             position: relative;
@@ -188,9 +184,7 @@
             height: 40px;
         }
 
-        /* =========================
-           MAIN
-        ========================= */
+        /* MAIN */
 
         main {
             position: relative;
@@ -206,38 +200,28 @@
             color: #292929;
         }
 
-        /* =========================
-           ACTIVITIES CONTAINER
-        ========================= */
+        /* ACTIVITIES CONTAINER */
 
         #activitiesContainer {
             max-width: 1100px;
             margin: 0 auto;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 300px));
-
+            grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
             gap: 25px;
-
             justify-content: center;
             align-items: start;
         }
 
-        /* =========================
-           ACTIVITY CARD
-        ========================= */
+        /* ACTIVITY CARD */
 
         .activity-card {
             position: relative;
-
             border: 2px solid #f3a9c2;
             border-radius: 15px;
             overflow: hidden;
-
             background-color: white;
             text-align: left;
+            cursor: none;
 
             box-shadow:
                 0 8px 20px rgba(201, 79, 124, 0.15);
@@ -245,8 +229,6 @@
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
-
-            cursor: none;
         }
 
         .activity-card:hover {
@@ -256,42 +238,32 @@
                 0 12px 25px rgba(201, 79, 124, 0.25);
         }
 
-        /* =========================
-           PDF IMAGE PREVIEW
-        ========================= */
+        /* PDF IMAGE PREVIEW */
 
         .pdf-preview {
             width: 100%;
             height: 200px;
-
             background-color: #fce4ec;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             overflow: hidden;
         }
 
         .pdf-preview img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             display: block;
 
-            transition:
-                transform 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .activity-card:hover .pdf-preview img {
             transform: scale(1.03);
         }
 
-        /* =========================
-           ACTIVITY INFORMATION
-        ========================= */
+        /* ACTIVITY INFORMATION */
 
         .activity-info {
             padding: 12px 14px 14px;
@@ -302,94 +274,61 @@
             font-family: "Comic Neue", sans-serif;
             font-size: 18px;
             font-weight: 700;
-
             margin-bottom: 7px;
-
             color: #333;
         }
-
-        /* DATE */
 
         .activity-date {
             font-family: "Comic Neue", sans-serif;
             font-size: 14px;
-
             color: #d96b91;
-
             margin-bottom: 5px;
         }
-
-        /* SCORE */
 
         .activity-score {
             font-family: "Comic Neue", sans-serif;
             font-size: 14px;
             font-weight: bold;
-
             color: #c6537c;
-
             margin-bottom: 12px;
         }
 
-        /* =========================
-           VIEW PDF BUTTON
-        ========================= */
+        /* VIEW PDF BUTTON */
 
         .file-link {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             border: none;
-
             color: white;
-
             background-color: #d96b91;
-
             padding: 9px 16px;
-
             border-radius: 8px;
-
             font-family: "Comic Neue", sans-serif;
-
             font-size: 15px;
             font-weight: bold;
-
             transition: 0.3s ease;
-
             cursor: none;
         }
 
         .file-link:hover {
             background-color: #b83f68;
-
             transform: scale(1.05);
         }
 
-        /* =========================
-           PDF MODAL
-        ========================= */
+        /* PDF MODAL */
 
         .pdf-modal {
             display: none;
-
             position: fixed;
-
             z-index: 20000;
-
             left: 0;
             top: 0;
-
             width: 100%;
             height: 100%;
-
-            background-color:
-                rgba(20, 10, 25, 0.88);
-
+            background-color: rgba(20, 10, 25, 0.88);
             align-items: center;
             justify-content: center;
-
             padding: 25px;
         }
 
@@ -399,28 +338,20 @@
 
         .pdf-modal-content {
             position: relative;
-
             width: 90%;
             max-width: 1000px;
-
             height: 90vh;
-
             background-color: white;
-
             border-radius: 15px;
-
             overflow: hidden;
 
             box-shadow:
-                0 0 40px
-                rgba(243, 169, 194, 0.5);
+                0 0 40px rgba(243, 169, 194, 0.5);
 
-            animation:
-                popup 0.3s ease;
+            animation: popup 0.3s ease;
         }
 
         @keyframes popup {
-
             from {
                 transform: scale(0.8);
                 opacity: 0;
@@ -430,100 +361,63 @@
                 transform: scale(1);
                 opacity: 1;
             }
-
         }
 
-        /* =========================
-           PDF HEADER
-        ========================= */
+        /* PDF HEADER */
 
         .pdf-header {
             height: 55px;
-
             background-color: #f8d8e5;
-
-            border-bottom:
-                2px solid #f3a9c2;
-
+            border-bottom: 2px solid #f3a9c2;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            font-family:
-                "Comic Neue",
-                sans-serif;
-
+            padding: 0 60px 0 15px;
+            font-family: "Comic Neue", sans-serif;
             font-size: 20px;
-
             font-weight: bold;
-
             color: #333;
+            text-align: center;
         }
 
-        /* =========================
-           PDF VIEWER
-        ========================= */
+        /* PDF VIEWER */
 
         .pdf-viewer {
+            display: block;
             width: 100%;
-
-            height:
-                calc(100% - 55px);
-
+            height: calc(100% - 55px);
             border: none;
-
-            background-color:
-                #f5f5f5;
+            background-color: #f5f5f5;
         }
 
-        /* =========================
-           CLOSE BUTTON
-        ========================= */
+        /* CLOSE BUTTON */
 
         .close-pdf {
             position: absolute;
-
             top: 8px;
             right: 10px;
-
             width: 38px;
             height: 38px;
-
             border: none;
-
             border-radius: 50%;
-
-            background-color:
-                #f3a9c2;
-
+            background-color: #f3a9c2;
             color: white;
-
             font-size: 22px;
-
             font-weight: bold;
-
             cursor: none;
-
-            z-index: 5;
+            z-index: 20001;
 
             box-shadow:
-                0 3px 10px
-                rgba(0, 0, 0, 0.25);
+                0 3px 10px rgba(0, 0, 0, 0.25);
         }
 
         .close-pdf:hover {
-            background-color:
-                #df789d;
+            background-color: #df789d;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
-
             header {
                 height: 30px;
             }
@@ -554,21 +448,33 @@
                 height: 90vh;
             }
 
+            .pdf-header {
+                font-size: 17px;
+            }
         }
 
+        /* TOUCH DEVICES */
+
+        @media (hover: none), (pointer: coarse) {
+            body,
+            .activity-card,
+            .file-link,
+            .close-pdf {
+                cursor: auto;
+            }
+
+            .custom-cursor {
+                display: none;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
-    <!-- =========================
-         FLOATING HEARTS
-    ========================= -->
+    <!-- FLOATING HEARTS -->
 
     <div class="floating-hearts">
-
         <span>♡</span>
         <span>♡</span>
         <span>♡</span>
@@ -577,54 +483,37 @@
         <span>♡</span>
         <span>♡</span>
         <span>♡</span>
-
     </div>
-
 
     <!-- HEADER -->
 
     <header></header>
 
-
     <!-- MAIN -->
 
     <main>
-
-        <h2>
-            My Activities
-        </h2>
-
+        <h2>My Activities</h2>
 
         <div id="activitiesContainer">
 
-
-            <!-- =========================
-                 ACTIVITY 1
-            ========================= -->
+            <!-- ACTIVITY 1 -->
 
             <div class="activity-card">
 
-                <!-- IMAGE PREVIEW -->
-
                 <div class="pdf-preview">
-
                     <img
                         src="Img/Screenshot 2026-10-08 174319.png"
-                        alt="POLIDAN - ACTIVITY 1 Preview">
-
+                        alt="POLIDAN - ACTIVITY 1 Preview"
+                    >
                 </div>
 
-
-                <!-- INFORMATION -->
-
                 <div class="activity-info">
-
                     <div class="file-name">
                         POLIDAN - ACTIVITY 1
                     </div>
 
                     <div class="activity-date">
-                         October 8, 2026
+                        October 8, 2026
                     </div>
 
                     <div class="activity-score">
@@ -637,38 +526,25 @@
                         onclick="openPDF(
                             'Activity1/POLIDAN - ACTIVITY 1.pdf',
                             'POLIDAN - ACTIVITY 1'
-                        )">
-
+                        )"
+                    >
                         View PDF
-
                     </button>
-
                 </div>
-
             </div>
 
-
-            <!-- =========================
-                 ACTIVITY 2
-            ========================= -->
+            <!-- ACTIVITY 2 -->
 
             <div class="activity-card">
 
-                <!-- IMAGE PREVIEW -->
-
                 <div class="pdf-preview">
-
                     <img
                         src="Img2/Screenshot 2026-10-08 174729.png"
-                        alt="POLIDAN - ACTIVITY 2 Preview">
-
+                        alt="POLIDAN - ACTIVITY 2 Preview"
+                    >
                 </div>
 
-
-                <!-- INFORMATION -->
-
                 <div class="activity-info">
-
                     <div class="file-name">
                         POLIDAN - ACTIVITY 2
                     </div>
@@ -678,7 +554,7 @@
                     </div>
 
                     <div class="activity-score">
-                         Score: none
+                        Score: none
                     </div>
 
                     <button
@@ -687,364 +563,203 @@
                         onclick="openPDF(
                             'Act/POLIDAN_ACTIVITY 2.pdf',
                             'POLIDAN_ACTIVITY 2.pdf'
-                        )">
-
+                        )"
+                    >
                         View PDF
-
                     </button>
-
                 </div>
-
             </div>
 
-
         </div>
-
     </main>
 
-
-    <!-- =========================
-         PDF MODAL
-    ========================= -->
+    <!-- PDF MODAL -->
 
     <div
         class="pdf-modal"
-        id="pdfModal">
-
+        id="pdfModal"
+        aria-hidden="true"
+    >
         <div class="pdf-modal-content">
 
-            <!-- CLOSE -->
+            <!-- CLOSE BUTTON -->
 
             <button
                 type="button"
                 class="close-pdf"
-                onclick="closePDF()">
-
+                id="closePdfButton"
+                onclick="closePDF()"
+                aria-label="Close PDF"
+            >
                 ×
-
             </button>
-
 
             <!-- PDF TITLE -->
 
-            <div
-                class="pdf-header"
-                id="pdfTitle">
-
+            <div class="pdf-header" id="pdfTitle">
                 Activity PDF
-
             </div>
 
-
-            <!-- PDF -->
+            <!-- PDF VIEWER -->
 
             <iframe
                 class="pdf-viewer"
                 id="pdfViewer"
-                title="Activity PDF">
-
-            </iframe>
+                title="Activity PDF"
+            ></iframe>
 
         </div>
-
     </div>
-
 
     <!-- CURSOR TRAIL -->
 
-    <canvas
-        id="cursorTrail">
-    </canvas>
-
+    <canvas id="cursorTrail"></canvas>
 
     <!-- CUSTOM CURSOR -->
 
-    <div
-        class="custom-cursor">
-    </div>
-
+    <div class="custom-cursor"></div>
 
     <script>
+        /* PDF MODAL */
 
-        /* =========================
-           PDF MODAL
-        ========================= */
-
-        const pdfModal =
-            document.getElementById("pdfModal");
-
-        const pdfViewer =
-            document.getElementById("pdfViewer");
-
-        const pdfTitle =
-            document.getElementById("pdfTitle");
-
+        const pdfModal = document.getElementById("pdfModal");
+        const pdfViewer = document.getElementById("pdfViewer");
+        const pdfTitle = document.getElementById("pdfTitle");
+        const closePdfButton = document.getElementById("closePdfButton");
 
         function openPDF(pdfFile, title) {
-
             pdfViewer.src = pdfFile;
-
             pdfTitle.textContent = title;
 
             pdfModal.classList.add("show");
+            pdfModal.setAttribute("aria-hidden", "false");
 
+            cursor.style.zIndex = "30000";
+            cursor.style.opacity = "1";
         }
-
 
         function closePDF() {
-
             pdfModal.classList.remove("show");
-
+            pdfModal.setAttribute("aria-hidden", "true");
             pdfViewer.src = "";
-
         }
 
+        /* CLOSE WHEN CLICKING OUTSIDE THE PDF */
 
-        /* =========================
-           CLOSE OUTSIDE MODAL
-        ========================= */
-
-        pdfModal.addEventListener(
-            "click",
-            function(event) {
-
-                if (event.target === pdfModal) {
-
-                    closePDF();
-
-                }
-
+        pdfModal.addEventListener("click", function(event) {
+            if (event.target === pdfModal) {
+                closePDF();
             }
-        );
+        });
 
+        /* CLOSE WITH ESCAPE */
 
-        /* =========================
-           ESC KEY
-        ========================= */
-
-        document.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key === "Escape") {
-
-                    closePDF();
-
-                }
-
+        document.addEventListener("keydown", function(event) {
+            if (
+                event.key === "Escape" &&
+                pdfModal.classList.contains("show")
+            ) {
+                closePDF();
             }
-        );
+        });
 
+        /* CUSTOM CURSOR */
 
-        /* =========================
-           CUSTOM CURSOR
-        ========================= */
-
-        const cursor =
-            document.querySelector(
-                ".custom-cursor"
-            );
-
-        const canvas =
-            document.getElementById(
-                "cursorTrail"
-            );
-
-        const ctx =
-            canvas.getContext("2d");
-
+        const cursor = document.querySelector(".custom-cursor");
+        const canvas = document.getElementById("cursorTrail");
+        const ctx = canvas.getContext("2d");
 
         function resizeCanvas() {
-
-            canvas.width =
-                window.innerWidth;
-
-            canvas.height =
-                window.innerHeight;
-
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-
 
         resizeCanvas();
 
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
 
-        let mouseX =
-            window.innerWidth / 2;
+        document.addEventListener("mousemove", function(event) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
 
-        let mouseY =
-            window.innerHeight / 2;
+            cursor.style.left = mouseX + "px";
+            cursor.style.top = mouseY + "px";
+            cursor.style.opacity = "1";
 
+            createHeart(mouseX, mouseY);
+        });
 
-        document.addEventListener(
-            "mousemove",
-            function(event) {
+        document.addEventListener("mouseleave", function() {
+            cursor.style.opacity = "0";
+        });
 
-                mouseX =
-                    event.clientX;
+        document.addEventListener("mouseenter", function() {
+            cursor.style.opacity = "1";
+        });
 
-                mouseY =
-                    event.clientY;
-
-                cursor.style.left =
-                    mouseX + "px";
-
-                cursor.style.top =
-                    mouseY + "px";
-
-                createHeart(
-                    mouseX,
-                    mouseY
-                );
-
-            }
-        );
-
-
-        /* =========================
-           HEART PARTICLES
-        ========================= */
+        /* HEART PARTICLES */
 
         let hearts = [];
 
-
         function createHeart(x, y) {
-
             hearts.push({
-
                 x: x,
-
                 y: y,
-
-                size:
-                    Math.random() * 10 + 8,
-
-                speedY:
-                    Math.random() * -1.5 - 0.5,
-
-                speedX:
-                    (Math.random() - 0.5) * 1.5,
-
+                size: Math.random() * 10 + 8,
+                speedY: Math.random() * -1.5 - 0.5,
+                speedX: (Math.random() - 0.5) * 1.5,
                 opacity: 1,
-
-                rotation:
-                    Math.random() * 360
-
+                rotation: Math.random() * 360
             });
 
-
             if (hearts.length > 45) {
-
                 hearts.shift();
-
             }
-
         }
 
+        /* DRAW HEART */
 
-        /* =========================
-           DRAW HEART
-        ========================= */
-
-        function drawHeart(
-            x,
-            y,
-            size,
-            rotation,
-            opacity
-        ) {
-
+        function drawHeart(x, y, size, rotation, opacity) {
             ctx.save();
-
-            ctx.translate(
-                x,
-                y
-            );
-
-            ctx.rotate(
-                rotation *
-                Math.PI /
-                180
-            );
-
-            ctx.globalAlpha =
-                opacity;
-
-            ctx.fillStyle =
-                "#f3a9c2";
-
-            ctx.shadowBlur =
-                12;
-
-            ctx.shadowColor =
-                "#f3a9c2";
+            ctx.translate(x, y);
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = "#f3a9c2";
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = "#f3a9c2";
 
             ctx.beginPath();
+            ctx.moveTo(0, size * 0.3);
 
-            ctx.moveTo(
-                0,
-                size * 0.3
+            ctx.bezierCurveTo(
+                -size, -size * 0.3,
+                -size * 0.6, -size,
+                0, -size * 0.35
             );
 
             ctx.bezierCurveTo(
-                -size,
-                -size * 0.3,
-                -size * 0.6,
-                -size,
-                0,
-                -size * 0.35
-            );
-
-            ctx.bezierCurveTo(
-                size * 0.6,
-                -size,
-                size,
-                -size * 0.3,
-                0,
-                size * 0.3
+                size * 0.6, -size,
+                size, -size * 0.3,
+                0, size * 0.3
             );
 
             ctx.fill();
-
             ctx.restore();
-
         }
 
-
-        /* =========================
-           ANIMATION
-        ========================= */
+        /* ANIMATION */
 
         function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
+            for (let i = hearts.length - 1; i >= 0; i--) {
+                const heart = hearts[i];
 
-
-            for (
-                let i = hearts.length - 1;
-                i >= 0;
-                i--
-            ) {
-
-                const heart =
-                    hearts[i];
-
-                heart.x +=
-                    heart.speedX;
-
-                heart.y +=
-                    heart.speedY;
-
-                heart.opacity -=
-                    0.015;
-
-                heart.size *=
-                    0.995;
-
+                heart.x += heart.speedX;
+                heart.y += heart.speedY;
+                heart.opacity -= 0.015;
+                heart.size *= 0.995;
 
                 drawHeart(
                     heart.x,
@@ -1054,86 +769,46 @@
                     heart.opacity
                 );
 
-
-                if (
-                    heart.opacity <= 0
-                ) {
-
-                    hearts.splice(
-                        i,
-                        1
-                    );
-
+                if (heart.opacity <= 0) {
+                    hearts.splice(i, 1);
                 }
-
             }
 
-
-            requestAnimationFrame(
-                animate
-            );
-
+            requestAnimationFrame(animate);
         }
-
 
         animate();
 
+        /* RESIZE */
 
-        /* =========================
-           RESIZE
-        ========================= */
+        window.addEventListener("resize", resizeCanvas);
 
-        window.addEventListener(
-            "resize",
-            function() {
+        /* CURSOR HOVER EFFECT */
 
-                resizeCanvas();
-
-            }
+        const clickableElements = document.querySelectorAll(
+            "button, .activity-card"
         );
 
+        clickableElements.forEach(function(element) {
+            element.addEventListener("mouseenter", function() {
+                cursor.classList.add("hover");
+            });
 
-        /* =========================
-           CURSOR HOVER
-        ========================= */
+            element.addEventListener("mouseleave", function() {
+                cursor.classList.remove("hover");
+            });
+        });
 
-        const clickableElements =
-            document.querySelectorAll(
-                "button, .activity-card"
-            );
+        /* CLOSE BUTTON CURSOR EFFECT */
 
+        closePdfButton.addEventListener("mouseenter", function() {
+            cursor.classList.add("hover");
+        });
 
-        clickableElements.forEach(
-            function(element) {
-
-                element.addEventListener(
-                    "mouseenter",
-                    function() {
-
-                        cursor.classList.add(
-                            "hover"
-                        );
-
-                    }
-                );
-
-
-                element.addEventListener(
-                    "mouseleave",
-                    function() {
-
-                        cursor.classList.remove(
-                            "hover"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
+        closePdfButton.addEventListener("mouseleave", function() {
+            cursor.classList.remove("hover");
+        });
     </script>
 
 </body>
-
 </html>
