@@ -1,1858 +1,1157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Portfolio</title>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Cute Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-
-    <style>
-
-        /* =========================
-           GENERAL
-        ========================= */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background-color: #ffd1e1;
-            color: #222;
-            min-height: 100vh;
-            cursor: none;
-        }
-
-
-        /* =========================
-           CUSTOM CURSOR
-        ========================= */
-
-        .custom-cursor {
-            position: fixed;
-
-            width: 20px;
-            height: 20px;
-
-            background-color: #f3a9c2;
-
-            border: 3px solid white;
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            transform: translate(-50%, -50%);
-
-            z-index: 10000;
-
-            box-shadow:
-                0 0 8px #f3a9c2,
-                0 0 18px rgba(243, 169, 194, 0.8);
-
-            transition:
-                width 0.15s ease,
-                height 0.15s ease;
-        }
-
-
-        .custom-cursor.hover {
-            width: 30px;
-            height: 30px;
-
-            background-color: rgba(243, 169, 194, 0.6);
-
-            box-shadow:
-                0 0 10px #f3a9c2,
-                0 0 25px #f3a9c2;
-        }
-
-
-        /* =========================
-           CURSOR TRAIL
-        ========================= */
-
-        #cursorTrail {
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            pointer-events: none;
-
-            z-index: 9998;
-        }
-
-
-        /* =========================
-           FLOATING HEART BACKGROUND
-        ========================= */
-
-        .floating-hearts {
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            overflow: hidden;
-
-            pointer-events: none;
-
-            z-index: 0;
-        }
-
-
-        .floating-hearts span {
-            position: absolute;
-
-            bottom: -50px;
-
-            color: #c94f7c;
-
-            font-size: 35px;
-
-            opacity: 0.6;
-
-            animation: floatUp 10s linear infinite;
-        }
-
-
-        .floating-hearts span:nth-child(1) {
-            left: 8%;
-            animation-delay: 0s;
-            font-size: 30px;
-        }
-
-        .floating-hearts span:nth-child(2) {
-            left: 20%;
-            animation-delay: 2s;
-            font-size: 22px;
-        }
-
-        .floating-hearts span:nth-child(3) {
-            left: 35%;
-            animation-delay: 4s;
-            font-size: 40px;
-        }
-
-        .floating-hearts span:nth-child(4) {
-            left: 50%;
-            animation-delay: 1s;
-            font-size: 28px;
-        }
-
-        .floating-hearts span:nth-child(5) {
-            left: 65%;
-            animation-delay: 5s;
-            font-size: 35px;
-        }
-
-        .floating-hearts span:nth-child(6) {
-            left: 75%;
-            animation-delay: 3s;
-            font-size: 25px;
-        }
-
-        .floating-hearts span:nth-child(7) {
-            left: 88%;
-            animation-delay: 6s;
-            font-size: 40px;
-        }
-
-        .floating-hearts span:nth-child(8) {
-            left: 45%;
-            animation-delay: 7s;
-            font-size: 20px;
-        }
-
-
-        @keyframes floatUp {
-
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.6;
-            }
-
-            50% {
-                transform: translateY(-400px) rotate(20deg);
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(-20deg);
-                opacity: 0;
-            }
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: relative;
-
-            z-index: 10;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            padding: 25px 35px;
-
-            background-color: #ffe0ec;
-        }
-
-
-        .logo {
-            text-decoration: none;
-
-            color: #222;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 50px;
-
-            font-weight: bold;
-
-            margin: 0;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            display: flex;
-
-            gap: 12px;
-
-            align-items: center;
-
-            justify-content: flex-end;
-
-            margin-left: auto;
-        }
-
-
-        nav a {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            padding: 10px 18px;
-
-            text-decoration: none;
-
-            color: #222;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 27px;
-
-            font-weight: 700;
-
-            background-color: #ffe8f0;
-
-            border: 3px solid #f8b8ce;
-
-            border-radius: 11px;
-
-            transition: 0.3s ease;
-        }
-
-
-        nav a i {
-            width: 45px;
-            height: 45px;
-
-            border-radius: 50%;
-
-            background-color: #f3a9c2;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            flex-shrink: 0;
-
-            color: transparent;
-        }
-
-
-        nav a i::before {
-            color: transparent;
-        }
-
-
-        nav a:hover {
-            background-color: #f3a9c5;
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 5px 15px rgba(201, 79, 124, 0.25);
-        }
-
-
-        /* =========================
-           HOME
-        ========================= */
-
-        .home {
-            position: relative;
-
-            z-index: 2;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 70px;
-
-            width: 100%;
-
-            min-height: calc(100vh - 120px);
-
-            padding: 50px 40px;
-
-            margin: 0 auto;
-        }
-
-
-        /* =========================
-           HOME IMAGE
-        ========================= */
-
-        .home-img {
-            width: 400px;
-            height: 400px;
-
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            flex-shrink: 0;
-        }
-
-
-        .home-img img {
-            width: 400px;
-            height: 400px;
-
-            object-fit: cover;
-
-            border-radius: 20px;
-
-            background-color: #eca3bc;
-
-            box-shadow:
-                0 10px 30px rgba(180, 70, 110, 0.18);
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-
-        .home-img::before {
-            content: "♡";
-
-            position: absolute;
-
-            font-size: 340px;
-
-            color: #f5b2ca;
-
-            line-height: 1;
-
-            z-index: 1;
-
-            transform: scale(1.15);
-        }
-
-
-        /* =========================
-           HOME CONTENT
-        ========================= */
-
-        .home-content {
-            width: 550px;
-
-            max-width: 550px;
-
-            text-align: left;
-        }
-
-
-        .home-content h1 {
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 48px;
-
-            margin: 0 0 25px 0;
-
-            color: #292929;
-        }
-
-
-        .home-content h3 {
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 30px;
-
-            margin: 0 0 25px 0;
-        }
-
-
-        .home-content p {
-            font-family: "Dancing Script", cursive;
-
-            font-size: 25px;
-
-            line-height: 1.7;
-
-            margin: 0 0 5px 0;
-
-            color: #000000;
-        }
-
-
-        /* =========================
-           CHANGING NAME
-        ========================= */
-
-        .name-text span {
-            position: relative;
-        }
-
-
-        .name-text span::after {
-            content: "Charm";
-
-            animation:
-                nameChange 10s infinite,
-                nameColor 10s infinite;
-        }
-
-
-        @keyframes nameChange {
-
-            0%,
-            30% {
-                content: "Charm";
-            }
-
-            31%,
-            60% {
-                content: "チャーム";
-            }
-
-            61%,
-            90% {
-                content: "참";
-            }
-
-            91%,
-            100% {
-                content: "Charm";
-            }
-
-        }
-
-
-        @keyframes nameColor {
-
-            0%,
-            30% {
-                color: #d94f83;
-            }
-
-            31%,
-            60% {
-                color: #9b59b6;
-            }
-
-            61%,
-            90% {
-                color: #e06aa0;
-            }
-
-            91%,
-            100% {
-                color: #d94f83;
-            }
-
-        }
-
-
-        /* =========================
-           TYPING TEXT
-        ========================= */
-
-        .typing-text span {
-            position: relative;
-        }
-
-
-        .typing-text span::after {
-            content: " Computer Science Student";
-
-            animation: words 10s infinite;
-
-            animation-delay: 0.8s;
-        }
-
-
-        @keyframes words {
-
-            0% {
-                content: " Computer Science Student";
-            }
-
-            50% {
-                content: " from CVSU Silang";
-            }
-
-            100% {
-                content: " BSCS-3B";
-            }
-
-        }
-
-
-        /* ==================================================
-           POP-UP
-        ================================================== */
-
-        .quiz-popup {
-
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: rgba(80, 30, 55, 0.35);
-
-            backdrop-filter: blur(5px);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            z-index: 20000;
-
-            transition:
-                opacity 0.35s ease,
-                visibility 0.35s ease;
-        }
-
-
-        .quiz-popup.show {
-
-            opacity: 1;
-
-            visibility: visible;
-        }
-
-
-        /* =========================
-           POP-UP BOX
-        ========================= */
-
-        .quiz-popup-box {
-
-            width: 90%;
-
-            height: 88%;
-
-            background-color: #fff8fb;
-
-            border: 4px solid #f3a9c2;
-
-            border-radius: 25px;
-
-            box-shadow:
-                0 20px 60px rgba(150, 60, 100, 0.3);
-
-            overflow: hidden;
-
-            position: relative;
-
-            transform: scale(0.65);
-
-            opacity: 0;
-        }
-
-
-        .quiz-popup.show .quiz-popup-box {
-
-            animation:
-                quizPopUp
-                0.6s
-                cubic-bezier(.17,.67,.35,1.25)
-                forwards;
-        }
-
-
-        @keyframes quizPopUp {
-
-            0% {
-
-                transform: scale(0.65);
-
-                opacity: 0;
-            }
-
-            60% {
-
-                transform: scale(1.04);
-
-                opacity: 1;
-            }
-
-            80% {
-
-                transform: scale(0.98);
-            }
-
-            100% {
-
-                transform: scale(1);
-
-                opacity: 1;
-            }
-
-        }
-
-
-        /* =========================
-           POP-UP HEADER
-        ========================= */
-
-        .quiz-popup-header {
-
-            height: 65px;
-
-            background-color: #ffe0ec;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 20px 0 25px;
-
-            border-bottom: 3px solid #f3a9c2;
-        }
-
-
-        .quiz-popup-header h2 {
-
-            margin: 0;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 28px;
-
-            color: #333;
-        }
-
-
-        /* =========================
-           CLOSE BUTTON
-        ========================= */
-
-        .close-quiz {
-
-            width: 42px;
-
-            height: 42px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background-color: #f3a9c2;
-
-            color: white;
-
-            font-size: 25px;
-
-            font-weight: bold;
-
-            cursor: none;
-
-            transition: 0.3s ease;
-        }
-
-
-        .close-quiz:hover {
-
-            background-color: #d94f83;
-
-            transform: rotate(90deg) scale(1.1);
-        }
-
-
-        /* =========================
-           IFRAME
-        ========================= */
-
-        .quiz-popup iframe {
-
-            width: 100%;
-
-            height: calc(100% - 65px);
-
-            border: none;
-
-            display: block;
-
-            background-color: #fff8fb;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 1100px) {
-
-            header {
-
-                flex-direction: column;
-
-                gap: 20px;
-            }
-
-            nav {
-
-                margin-left: 0;
-
-                flex-wrap: wrap;
-
-                justify-content: center;
-            }
-
-            .home {
-
-                gap: 40px;
-            }
-
-            .home-img,
-            .home-img img {
-
-                width: 350px;
-
-                height: 350px;
-            }
-
-            .home-content {
-
-                width: 480px;
-            }
-
-            .home-content h1 {
-
-                font-size: 42px;
-            }
-
-        }
-
-
-        @media (max-width: 900px) {
-
-            header {
-
-                padding: 25px;
-            }
-
-            .logo {
-
-                font-size: 42px;
-            }
-
-            nav a {
-
-                font-size: 20px;
-
-                padding: 8px 12px;
-            }
-
-            nav a i {
-
-                width: 35px;
-
-                height: 35px;
-            }
-
-            .home {
-
-                flex-direction: column;
-
-                min-height: auto;
-
-                padding: 70px 20px;
-
-                text-align: center;
-
-                gap: 40px;
-            }
-
-            .home-img,
-            .home-img img {
-
-                width: 330px;
-
-                height: 330px;
-            }
-
-            .home-content {
-
-                width: 100%;
-
-                max-width: 650px;
-
-                text-align: center;
-            }
-
-            .home-content h1 {
-
-                font-size: 40px;
-            }
-
-            .home-content h3 {
-
-                font-size: 26px;
-            }
-
-            .home-content p {
-
-                font-size: 22px;
-            }
-
-            .quiz-popup-box {
-
-                width: 95%;
-
-                height: 90%;
-            }
-
-        }
-
-
-        @media (max-width: 500px) {
-
-            .logo {
-
-                font-size: 35px;
-            }
-
-            nav a span {
-
-                display: none;
-            }
-
-            nav a {
-
-                padding: 8px;
-            }
-
-            .home-img,
-            .home-img img {
-
-                width: 280px;
-
-                height: 280px;
-            }
-
-            .home-content h1 {
-
-                font-size: 32px;
-            }
-
-            .home-content h3 {
-
-                font-size: 22px;
-            }
-
-            .home-content p {
-
-                font-size: 20px;
-            }
-
-            .quiz-popup-box {
-
-                width: 96%;
-
-                height: 92%;
-
-                border-radius: 18px;
-            }
-
-            .quiz-popup-header h2 {
-
-                font-size: 22px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #ffd1e1;
+    color: #222;
+    cursor: none;
+    font-family: "Comic Neue", sans-serif;
+}
+
+/* FLOATING HEARTS */
+.floating-hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-hearts span {
+    position: absolute;
+    bottom: -50px;
+    color: #e9a8c2;
+    font-size: 30px;
+    opacity: .6;
+    animation: floatUp 10s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) { left: 8%; }
+.floating-hearts span:nth-child(2) { left: 20%; animation-delay: 2s; font-size: 22px; }
+.floating-hearts span:nth-child(3) { left: 35%; animation-delay: 4s; font-size: 40px; }
+.floating-hearts span:nth-child(4) { left: 50%; animation-delay: 1s; font-size: 28px; }
+.floating-hearts span:nth-child(5) { left: 65%; animation-delay: 5s; }
+.floating-hearts span:nth-child(6) { left: 75%; animation-delay: 3s; font-size: 25px; }
+.floating-hearts span:nth-child(7) { left: 88%; animation-delay: 6s; font-size: 40px; }
+.floating-hearts span:nth-child(8) { left: 45%; animation-delay: 7s; font-size: 20px; }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% { opacity: .6; }
+    50% { transform: translateY(-400px) rotate(20deg); }
+    100% {
+        transform: translateY(-100vh) rotate(-20deg);
+        opacity: 0;
+    }
+}
+
+/* HEADER */
+header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 35px;
+    background: #ffe0ec;
+}
+
+.logo {
+    margin: 0;
+    color: #222;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* NAVIGATION BUTTONS */
+nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #222;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    background: #ffe8f0;
+    border: 3px solid #f8c8dc;
+    border-radius: 11px;
+    transition: .3s ease;
+}
+
+nav a .circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 50%;
+    background: #f3b6ce;
+}
+
+nav a:hover {
+    background: #f8c8dc;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 150, 180, .2);
+}
+
+/* HOME SECTION */
+.home {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    padding: 50px 40px;
+    animation: homeEnter .6s ease both;
+}
+
+@keyframes homeEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* IMAGE AND NOTES WRAPPER */
+.image-notes-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    width: 350px;
+    height: 350px;
+    z-index: 5;
+}
+
+/* FLOATING IMAGE */
+.home-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+
+.home-img::before {
+    content: "♡";
+    position: absolute;
+    font-size: 340px;
+    color: #f5b2ca;
+    line-height: 1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.home-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #f8c8dc;
+    box-shadow: 0 5px 15px rgba(248, 200, 220, .4);
+    transition: box-shadow .3s ease, border-color .3s ease;
+    cursor: pointer;
+}
+
+.home-img:hover img {
+    box-shadow: 0 8px 25px rgba(220, 130, 170, .45);
+    border-color: #ed9fbe;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* CUTE PAPER NOTE — LEFT SIDE OF IMAGE */
+.hobby-note {
+    position: absolute;
+    top: 18px;
+    right: calc(100% + 20px);
+    width: 245px;
+    padding: 20px 17px 16px;
+    background: #fff1b8;
+    color: #795a60;
+    border: 1px solid #f3d98b;
+    border-radius: 5px 12px 5px 10px;
+    box-shadow: 3px 7px 15px rgba(130, 80, 100, .2);
+    transform: rotate(-3deg) scale(.75);
+    transform-origin: right center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity .25s ease,
+        transform .3s ease,
+        visibility .25s;
+    z-index: 20;
+}
+
+/* PINK TAPE */
+.hobby-note::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%) rotate(4deg);
+    width: 68px;
+    height: 19px;
+    background: rgba(244, 174, 202, .8);
+    border-radius: 3px;
+}
+
+.hobby-note.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: rotate(-2deg) scale(1);
+}
+
+.note-close {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background: #f4c3d5;
+    color: #855468;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.note-close:hover {
+    background: #e69bb9;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.note-title {
+    margin: 3px 0 12px;
+    padding-right: 16px;
+    font-family: "Dancing Script", cursive;
+    font-size: 27px;
+    text-align: center;
+    color: #c56f92;
+}
+
+.note-divider {
+    border: none;
+    border-top: 1px dashed #d9b96b;
+    margin: 10px 0;
+}
+
+.note-label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #bd7890;
+}
+
+.note-text {
+    margin: 0;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.note-footer {
+    margin: 13px 0 0;
+    text-align: right;
+    font-family: "Dancing Script", cursive;
+    font-size: 17px;
+    color: #c56f92;
+}
+
+/* HOME TEXT */
+.home-content {
+    width: 550px;
+    max-width: 100%;
+    text-align: left;
+}
+
+.home-content h1 {
+    margin: 0 0 25px;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 48px;
+    color: #292929;
+}
+
+.home-content h3 {
+    margin: 0 0 25px;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 30px;
+}
+
+.home-content p {
+    margin: 0 0 12px;
+    font-family: "Dancing Script", cursive;
+    font-size: 25px;
+    line-height: 1.7;
+    color: #000;
+}
+
+/* CHANGING NAME */
+.name-text span::after {
+    content: "Charm";
+    animation: nameChange 10s infinite, nameColor 10s infinite;
+}
+
+@keyframes nameChange {
+    0%, 30% { content: "Charm"; }
+    31%, 60% { content: "チャーム"; }
+    61%, 90% { content: "참"; }
+    91%, 100% { content: "Charm"; }
+}
+
+@keyframes nameColor {
+    0%, 30% { color: #d98bab; }
+    31%, 60% { color: #c5a0d8; }
+    61%, 90% { color: #e6a0bf; }
+    91%, 100% { color: #d98bab; }
+}
+
+/* CHANGING DESCRIPTION */
+.typing-text span::after {
+    content: " Computer Science Student";
+    animation: words 10s infinite;
+    animation-delay: .8s;
+}
+
+@keyframes words {
+    0%, 33% { content: " Computer Science Student"; }
+    34%, 66% { content: " from CVSU Silang"; }
+    67%, 100% { content: " BSCS-3B"; }
+}
+
+/* CUSTOM CURSOR */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #f3b6ce;
+    border: 3px solid white;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 30000;
+    box-shadow: 0 0 8px #f3b6ce;
+    transition: width .15s, height .15s, background .15s;
+}
+
+.custom-cursor.hover {
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-color: #e8a0be;
+}
+
+/* CURSOR TRAIL */
+#cursorTrail {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 29999;
+}
+
+/* QUIZZES / ACTIVITIES / EXAM POPUP */
+.quiz-popup {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(80, 30, 55, .3);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 20000;
+    transition: opacity .3s, visibility .3s;
+}
+
+.quiz-popup.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.quiz-popup-box {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 88%;
+    background: #fff8fb;
+    border: 3px solid #f8c8dc;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(180, 120, 150, .2);
+    overflow: hidden;
+    transform: translateY(20px) scale(.95);
+    opacity: 0;
+}
+
+.quiz-popup.show .quiz-popup-box {
+    animation: popupEnter .35s ease forwards;
+}
+
+@keyframes popupEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.quiz-popup-header {
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 8px 20px 8px 25px;
+    background: #ffe0ec;
+    border-bottom: 2px solid #f8c8dc;
+}
+
+.quiz-popup-header h2 {
+    margin: 0;
+    font-family: "Comic Neue", sans-serif;
+    font-size: 28px;
+    color: #333;
+}
+
+.close-quiz {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: #f3b6ce;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.close-quiz:hover {
+    background: #e69bb9;
+    transform: scale(1.05);
+}
+
+.quiz-popup iframe {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: none;
+    display: block;
+    background: #fff8fb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .home {
+        gap: 40px;
+    }
+
+    .image-notes-wrapper {
+        width: 320px;
+        height: 320px;
+    }
+
+    .home-img::before {
+        font-size: 310px;
+    }
+
+    .home-content {
+        width: 480px;
+    }
+
+    .home-content h1 {
+        font-size: 42px;
+    }
+
+    .hobby-note {
+        width: 225px;
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        padding: 25px;
+    }
+
+    .logo {
+        font-size: 42px;
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 8px 12px;
+    }
+
+    nav a .circle {
+        width: 35px;
+        height: 35px;
+        flex-basis: 35px;
+    }
+
+    .home {
+        flex-direction: column;
+        min-height: auto;
+        padding: 70px 20px;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .image-notes-wrapper {
+        width: 300px;
+        height: 300px;
+        margin-top: 175px;
+        margin-bottom: 0;
+    }
+
+    .home-img::before {
+        font-size: 290px;
+    }
+
+    /* ON SMALLER SCREENS, NOTE SITS ABOVE THE IMAGE */
+    .hobby-note {
+        top: auto;
+        bottom: calc(100% + 22px);
+        left: 50%;
+        right: auto;
+        width: 245px;
+        transform: translateX(-50%) rotate(-2deg) scale(.8);
+        transform-origin: bottom center;
+    }
+
+    .hobby-note.show {
+        transform: translateX(-50%) rotate(-2deg) scale(1);
+    }
+
+    .home-content {
+        width: 100%;
+        max-width: 650px;
+        text-align: center;
+    }
+
+    .home-content h1 {
+        font-size: 40px;
+    }
+
+    .home-content h3 {
+        font-size: 26px;
+    }
+
+    .home-content p {
+        font-size: 22px;
+    }
+
+    .quiz-popup-box {
+        width: 95%;
+        height: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        cursor: auto;
+    }
+
+    .custom-cursor,
+    #cursorTrail {
+        display: none;
+    }
+
+    .logo {
+        font-size: 35px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 8px;
+        gap: 7px;
+    }
+
+    nav a span:not(.circle) {
+        display: none;
+    }
+
+    nav a .circle {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
+    }
+
+    .image-notes-wrapper {
+        width: 250px;
+        height: 250px;
+        margin-top: 180px;
+    }
+
+    .home-img::before {
+        font-size: 245px;
+    }
+
+    .hobby-note {
+        width: 230px;
+        padding: 17px 15px 14px;
+    }
+
+    .note-title {
+        font-size: 25px;
+    }
+
+    .home-content h1 {
+        font-size: 32px;
+    }
+
+    .home-content h3 {
+        font-size: 22px;
+    }
+
+    .home-content p {
+        font-size: 20px;
+    }
+
+    .quiz-popup-box {
+        width: 96%;
+        height: 92%;
+        border-radius: 18px;
+    }
+
+    .quiz-popup-header h2 {
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-img,
+    .floating-hearts span,
+    .home,
+    .quiz-popup-box {
+        animation: none;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- FLOATING HEARTS -->
+<div class="floating-hearts" aria-hidden="true">
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+</div>
 
-    <!-- =========================
-         FLOATING HEARTS
-    ========================= -->
+<!-- HEADER -->
+<header>
+    <h2 class="logo">My Portfolio</h2>
 
-    <div class="floating-hearts">
+    <nav>
+        <a href="#" id="homeLink">
+            <span class="circle" aria-hidden="true"></span>
+            <span>Home</span>
+        </a>
 
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
-        <span>♡</span>
+        <a href="quizzes.html" id="quizzesLink">
+            <span class="circle" aria-hidden="true"></span>
+            <span>Quizzes</span>
+        </a>
 
-    </div>
+        <a href="Activities.html" id="activitiesLink">
+            <span class="circle" aria-hidden="true"></span>
+            <span>Activities</span>
+        </a>
 
+        <a href="exam.html" id="examLink">
+            <span class="circle" aria-hidden="true"></span>
+            <span>Exam</span>
+        </a>
+    </nav>
+</header>
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<!-- HOME SECTION -->
+<section class="home" id="homeSection">
 
-    <header>
-
-        <h2 class="logo">
-            My Portfolio
-        </h2>
-
-
-        <nav>
-
-            <!-- HOME -->
-
-            <a href="#" id="homeLink" class="active">
-
-                <i class="fa-solid fa-house"></i>
-
-                <span>Home</span>
-
-            </a>
-
-
-            <!-- QUIZZES -->
-
-            <a href="quizzes.html" id="quizzesLink">
-
-                <i class="fa-solid fa-pen-to-square"></i>
-
-                <span>Quizzes</span>
-
-            </a>
-
-
-            <!-- ACTIVITIES -->
-
-            <a href="activities.html" id="activitiesLink">
-
-                <i class="fa-solid fa-list-check"></i>
-
-                <span>Activities</span>
-
-            </a>
-
-
-            <!-- EXAM -->
-
-            <a href="exam.html" id="examLink">
-
-                <i class="fas fa-pen-to-square"></i>
-
-                <span>Exam</span>
-
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <!-- =========================
-         HOME
-    ========================= -->
-
-    <section class="home">
+    <!-- BUBBLES IMAGE AND NOTE -->
+    <div class="image-notes-wrapper">
 
         <div class="home-img">
-
-            <img src="./image.png/Image.webp"
-                class="img-fluid"
-                alt="My photo">
-
+            <img
+                src="./image.png/Image.webp"
+                alt="Bubbles - click to see my cute notes"
+                id="bubblesImage"
+                tabindex="0"
+                role="button"
+                aria-expanded="false"
+                aria-controls="hobbyNote"
+                title="Click me for a cute note!"
+            >
         </div>
 
+        <!-- NOTE APPEARS ON THE LEFT SIDE -->
+        <aside class="hobby-note" id="hobbyNote" aria-hidden="true">
 
-        <div class="home-content">
+            <button
+                type="button"
+                class="note-close"
+                id="closeNote"
+                aria-label="Close note"
+            >×</button>
 
-            <h1 class="name-text">
+            <h3 class="note-title">♡ Little Notes ♡</h3>
 
-                Halooo! It's me <span></span>
+            <hr class="note-divider">
 
-            </h1>
-
-
-            <h3 class="typing-text">
-
-                I'm a<span></span>
-
-            </h3>
-
-
-            <p>
-                Computer Science Student from CVSU Silang
+            <p class="note-label">🎸 My Hobbies</p>
+            <p class="note-text">
+                Playing bass guitar, listening to music,
+                watching movies, buying anik-aniks and taking pictures.
             </p>
 
+            <hr class="note-divider">
 
-            <p>
-                BSCS-3B 202410561
+            <p class="note-label">🍜 Favorite Foods</p>
+            <p class="note-text">
+                Takoyaki, tteokbokki, ramen, onigiri, and spicy foods.
             </p>
 
-
-            <p>
-                19 yrs old
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         MAIN POP-UP
-    ================================================== -->
-
-    <div class="quiz-popup" id="quizPopup">
-
-        <div class="quiz-popup-box">
-
-            <div class="quiz-popup-header">
-
-                <h2 id="popupTitle">
-                    💗 My Quizzes
-                </h2>
-
-
-                <button
-                    class="close-quiz"
-                    id="closeQuiz">
-
-                    ×
-
-                </button>
-
-            </div>
-
-
-            <iframe
-                src="about:blank"
-                id="quizFrame"
-                title="Portfolio Content">
-            </iframe>
-
-        </div>
+            <p class="note-footer">made with love ♡</p>
+        </aside>
 
     </div>
 
+    <!-- INTRODUCTION -->
+    <div class="home-content">
+        <h1 class="name-text">
+            Halooo! It's me <span></span>
+        </h1>
 
-    <!-- =========================
-         CURSOR TRAIL
-    ========================= -->
+        <h3 class="typing-text">
+            I'm a<span></span>
+        </h3>
 
-    <canvas id="cursorTrail"></canvas>
+        <p>Computer Science Student from CVSU Silang</p>
+        <p>BSCS-3B 202410561</p>
+        <p>19 yrs old</p>
 
+        <p style="font-family:'Comic Neue',sans-serif;font-size:15px;color:#a75f7c;">
+            Psst... click my picture for a surprise! ♡
+        </p>
+    </div>
 
-    <!-- =========================
-         CUSTOM CURSOR
-    ========================= -->
+</section>
 
-    <div class="custom-cursor"></div>
+<!-- QUIZZES / ACTIVITIES / EXAM POPUP -->
+<div class="quiz-popup" id="quizPopup" aria-hidden="true">
+    <div class="quiz-popup-box">
 
+        <div class="quiz-popup-header">
+            <h2 id="popupTitle">💗 My Quizzes</h2>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+            <button
+                type="button"
+                class="close-quiz"
+                id="closeQuiz"
+                aria-label="Close popup"
+            >×</button>
+        </div>
 
-    <script>
+        <iframe
+            src="about:blank"
+            id="quizFrame"
+            title="Portfolio Content"
+        ></iframe>
 
+    </div>
+</div>
 
-        /* ==================================================
-           CUSTOM CURSOR
-        ================================================== */
+<!-- CURSOR EFFECTS -->
+<canvas id="cursorTrail" aria-hidden="true"></canvas>
+<div class="custom-cursor" aria-hidden="true"></div>
 
-        const cursor =
-            document.querySelector(".custom-cursor");
+<script>
+/* CUSTOM CURSOR */
+const cursor = document.querySelector(".custom-cursor");
+const canvas = document.getElementById("cursorTrail");
+const ctx = canvas.getContext("2d");
 
-        const canvas =
-            document.getElementById("cursorTrail");
+function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
 
-        const ctx =
-            canvas.getContext("2d");
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
 
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
 
-        function resizeCanvas() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
 
-            canvas.width =
-                window.innerWidth;
+resizeCanvas();
 
-            canvas.height =
-                window.innerHeight;
+let hearts = [];
 
-        }
+function createHeart(x, y) {
+    hearts.push({
+        x,
+        y,
+        size: Math.random() * 10 + 8,
+        speedY: Math.random() * -1.5 - .5,
+        speedX: (Math.random() - .5) * 1.5,
+        opacity: 1,
+        rotation: Math.random() * 360
+    });
 
-        resizeCanvas();
+    if (hearts.length > 45) {
+        hearts.shift();
+    }
+}
 
+document.addEventListener("mousemove", function(event) {
+    if (window.innerWidth <= 500) return;
 
-        let mouseX =
-            window.innerWidth / 2;
+    cursor.style.left = event.clientX + "px";
+    cursor.style.top = event.clientY + "px";
 
-        let mouseY =
-            window.innerHeight / 2;
+    createHeart(event.clientX, event.clientY);
+});
 
+function drawHeart(x, y, size, rotation, opacity) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation * Math.PI / 180);
+    ctx.globalAlpha = Math.max(0, opacity);
+    ctx.fillStyle = "#f3b6ce";
 
-        document.addEventListener(
-            "mousemove",
-            function(event) {
+    ctx.beginPath();
+    ctx.moveTo(0, size * .3);
 
-                mouseX =
-                    event.clientX;
+    ctx.bezierCurveTo(
+        -size, -size * .3,
+        -size * .6, -size,
+        0, -size * .35
+    );
 
-                mouseY =
-                    event.clientY;
+    ctx.bezierCurveTo(
+        size * .6, -size,
+        size, -size * .3,
+        0, size * .3
+    );
 
-                cursor.style.left =
-                    mouseX + "px";
+    ctx.fill();
+    ctx.restore();
+}
 
-                cursor.style.top =
-                    mouseY + "px";
+function animate() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-                createHeart(
-                    mouseX,
-                    mouseY
-                );
+    for (let i = hearts.length - 1; i >= 0; i--) {
+        const heart = hearts[i];
 
-            }
+        heart.x += heart.speedX;
+        heart.y += heart.speedY;
+        heart.opacity -= .015;
+        heart.size *= .995;
+
+        drawHeart(
+            heart.x,
+            heart.y,
+            heart.size,
+            heart.rotation,
+            heart.opacity
         );
 
-
-        /* ==================================================
-           HEART PARTICLES
-        ================================================== */
-
-        let hearts = [];
-
-
-        function createHeart(x, y) {
-
-            hearts.push({
-
-                x: x,
-
-                y: y,
-
-                size:
-                    Math.random() * 10 + 8,
-
-                speedY:
-                    Math.random() * -1.5 - 0.5,
-
-                speedX:
-                    (Math.random() - 0.5) * 1.5,
-
-                opacity: 1,
-
-                rotation:
-                    Math.random() * 360
-
-            });
-
-
-            if (hearts.length > 45) {
-
-                hearts.shift();
-
-            }
-
+        if (heart.opacity <= 0) {
+            hearts.splice(i, 1);
         }
+    }
 
+    requestAnimationFrame(animate);
+}
 
-        function drawHeart(
-            x,
-            y,
-            size,
-            rotation,
-            opacity
-        ) {
+animate();
+window.addEventListener("resize", resizeCanvas);
 
-            ctx.save();
+/* CURSOR HOVER */
+document.querySelectorAll("a, button, .home-img img").forEach(element => {
+    element.addEventListener("mouseenter", () => {
+        cursor.classList.add("hover");
+    });
 
-            ctx.translate(x, y);
+    element.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hover");
+    });
+});
 
-            ctx.rotate(
-                rotation * Math.PI / 180
-            );
+/* BUBBLES IMAGE NOTE */
+const bubblesImage = document.getElementById("bubblesImage");
+const hobbyNote = document.getElementById("hobbyNote");
+const closeNote = document.getElementById("closeNote");
 
-            ctx.globalAlpha =
-                opacity;
+function toggleNote() {
+    const isOpen = hobbyNote.classList.contains("show");
 
-            ctx.fillStyle =
-                "#f3a9c2";
+    hobbyNote.classList.toggle("show", !isOpen);
+    hobbyNote.setAttribute("aria-hidden", String(isOpen));
+    bubblesImage.setAttribute("aria-expanded", String(!isOpen));
+}
 
-            ctx.shadowBlur =
-                12;
+function hideNote() {
+    hobbyNote.classList.remove("show");
+    hobbyNote.setAttribute("aria-hidden", "true");
+    bubblesImage.setAttribute("aria-expanded", "false");
+}
 
-            ctx.shadowColor =
-                "#f3a9c2";
+bubblesImage.addEventListener("click", toggleNote);
 
-            ctx.beginPath();
+bubblesImage.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleNote();
+    }
+});
 
-            ctx.moveTo(
-                0,
-                size * 0.3
-            );
+closeNote.addEventListener("click", function(event) {
+    event.stopPropagation();
+    hideNote();
+});
 
-            ctx.bezierCurveTo(
-                -size,
-                -size * 0.3,
-                -size * 0.6,
-                -size,
-                0,
-                -size * 0.35
-            );
+/* CLOSE NOTE WHEN CLICKING OUTSIDE */
+document.addEventListener("click", function(event) {
+    const clickedImage = bubblesImage.contains(event.target);
+    const clickedNote = hobbyNote.contains(event.target);
 
-            ctx.bezierCurveTo(
-                size * 0.6,
-                -size,
-                size,
-                -size * 0.3,
-                0,
-                size * 0.3
-            );
+    if (!clickedImage && !clickedNote) {
+        hideNote();
+    }
+});
 
-            ctx.fill();
+/* POPUP ELEMENTS */
+const quizzesLink = document.getElementById("quizzesLink");
+const activitiesLink = document.getElementById("activitiesLink");
+const examLink = document.getElementById("examLink");
+const homeLink = document.getElementById("homeLink");
 
-            ctx.restore();
+const quizPopup = document.getElementById("quizPopup");
+const quizFrame = document.getElementById("quizFrame");
+const closeQuiz = document.getElementById("closeQuiz");
+const popupTitle = document.getElementById("popupTitle");
+const homeSection = document.getElementById("homeSection");
 
+let navigationTimer;
+
+/* OPEN POPUP */
+function openPopup(page, title) {
+    clearTimeout(navigationTimer);
+
+    hideNote();
+    popupTitle.textContent = title;
+
+    quizPopup.classList.add("show");
+    quizPopup.setAttribute("aria-hidden", "false");
+
+    quizFrame.src = "about:blank";
+
+    navigationTimer = setTimeout(() => {
+        quizFrame.src = page;
+    }, 50);
+}
+
+/* CLOSE POPUP */
+function closePopup() {
+    clearTimeout(navigationTimer);
+
+    quizPopup.classList.remove("show");
+    quizPopup.setAttribute("aria-hidden", "true");
+
+    navigationTimer = setTimeout(() => {
+        quizFrame.src = "about:blank";
+        popupTitle.textContent = "💗 My Quizzes";
+
+        homeSection.style.animation = "none";
+        void homeSection.offsetWidth;
+        homeSection.style.animation = "";
+    }, 300);
+}
+
+/* NAVIGATION LINKS */
+quizzesLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    openPopup("quizzes.html", "💗 My Quizzes");
+});
+
+activitiesLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    openPopup("Activities.html", "💗 My Activities");
+});
+
+examLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    openPopup("exam.html", "💗 My Exam");
+});
+
+homeLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    closePopup();
+    hideNote();
+});
+
+/* CLOSE BUTTON */
+closeQuiz.addEventListener("click", closePopup);
+
+/* CLICK OUTSIDE POPUP */
+quizPopup.addEventListener("click", function(event) {
+    if (event.target === quizPopup) {
+        closePopup();
+    }
+});
+
+/* ESCAPE KEY */
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        hideNote();
+
+        if (quizPopup.classList.contains("show")) {
+            closePopup();
         }
-
-
-        function animate() {
-
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-
-
-            for (
-                let i = hearts.length - 1;
-                i >= 0;
-                i--
-            ) {
-
-                const heart =
-                    hearts[i];
-
-                heart.x +=
-                    heart.speedX;
-
-                heart.y +=
-                    heart.speedY;
-
-                heart.opacity -=
-                    0.015;
-
-                heart.size *=
-                    0.995;
-
-
-                drawHeart(
-                    heart.x,
-                    heart.y,
-                    heart.size,
-                    heart.rotation,
-                    heart.opacity
-                );
-
-
-                if (
-                    heart.opacity <= 0
-                ) {
-
-                    hearts.splice(i, 1);
-
-                }
-
-            }
-
-
-            requestAnimationFrame(
-                animate
-            );
-
-        }
-
-
-        animate();
-
-
-        window.addEventListener(
-            "resize",
-            function() {
-
-                resizeCanvas();
-
-            }
-        );
-
-
-        /* ==================================================
-           CURSOR HOVER EFFECT
-        ================================================== */
-
-        const clickableElements =
-            document.querySelectorAll(
-                "a, button"
-            );
-
-
-        clickableElements.forEach(
-            function(element) {
-
-                element.addEventListener(
-                    "mouseenter",
-                    function() {
-
-                        cursor.classList.add(
-                            "hover"
-                        );
-
-                    }
-                );
-
-
-                element.addEventListener(
-                    "mouseleave",
-                    function() {
-
-                        cursor.classList.remove(
-                            "hover"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* ==================================================
-           POP-UP ELEMENTS
-        ================================================== */
-
-        const quizzesLink =
-            document.getElementById(
-                "quizzesLink"
-            );
-
-        const activitiesLink =
-            document.getElementById(
-                "activitiesLink"
-            );
-
-        const examLink =
-            document.getElementById(
-                "examLink"
-            );
-
-        const homeLink =
-            document.getElementById(
-                "homeLink"
-            );
-
-        const quizPopup =
-            document.getElementById(
-                "quizPopup"
-            );
-
-        const quizFrame =
-            document.getElementById(
-                "quizFrame"
-            );
-
-        const closeQuiz =
-            document.getElementById(
-                "closeQuiz"
-            );
-
-        const popupTitle =
-            document.getElementById(
-                "popupTitle"
-            );
-
-
-        /* ==================================================
-           OPEN POPUP
-        ================================================== */
-
-        function openPopup(page, title) {
-
-            /*
-             * Show popup
-             */
-
-            quizPopup.classList.add(
-                "show"
-            );
-
-
-            /*
-             * Change title
-             */
-
-            popupTitle.innerHTML =
-                title;
-
-
-            /*
-             * Clear previous iframe
-             */
-
-            quizFrame.src =
-                "about:blank";
-
-
-            /*
-             * Load new page
-             */
-
-            setTimeout(
-                function() {
-
-                    quizFrame.src =
-                        page;
-
-                },
-                100
-            );
-
-        }
-
-
-        /* ==================================================
-           QUIZZES
-        ================================================== */
-
-        quizzesLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                openPopup(
+    }
+});
+
+/* NAVIGATION INSIDE IFRAME */
+quizFrame.addEventListener("load", function() {
+    try {
+        const iframeDocument = quizFrame.contentDocument;
+
+        if (!iframeDocument) return;
+
+        iframeDocument.querySelectorAll("a").forEach(link => {
+            const href = link.getAttribute("href");
+            if (!href) return;
+
+            const filename = href
+                .split(/[?#]/)[0]
+                .split("/")
+                .pop()
+                .toLowerCase();
+
+            const pages = {
+                "activities.html": [
+                    "Activities.html",
+                    "💗 My Activities"
+                ],
+                "quizzes.html": [
                     "quizzes.html",
                     "💗 My Quizzes"
-                );
-
-            }
-        );
-
-
-        /* ==================================================
-           ACTIVITIES
-        ================================================== */
-
-        activitiesLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                openPopup(
-                    "activities.html",
-                    "💗 My Activities"
-                );
-
-            }
-        );
-
-
-        /* ==================================================
-           EXAM
-        ================================================== */
-
-        examLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                openPopup(
+                ],
+                "exam.html": [
                     "exam.html",
                     "💗 My Exam"
-                );
-
-            }
-        );
-
-
-        /* ==================================================
-           HOME
-        ================================================== */
-
-        homeLink.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                closePopup();
-
-            }
-        );
-
-
-        /* ==================================================
-           CLOSE POPUP FUNCTION
-        ================================================== */
-
-        function closePopup() {
-
-            /*
-             * Hide popup
-             */
-
-            quizPopup.classList.remove(
-                "show"
-            );
-
-
-            /*
-             * Completely clear iframe
-             */
-
-            setTimeout(
-                function() {
-
-                    quizFrame.src =
-                        "about:blank";
-
-                    popupTitle.innerHTML =
-                        "💗 My Quizzes";
-
-                },
-                350
-            );
-
-        }
-
-
-        /* ==================================================
-           X BUTTON
-        ================================================== */
-
-        closeQuiz.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-                closePopup();
-
-            }
-        );
-
-
-        /* ==================================================
-           CLICK OUTSIDE POPUP
-        ================================================== */
-
-        quizPopup.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    event.target ===
-                    quizPopup
-                ) {
-
-                    closePopup();
-
-                }
-
-            }
-        );
-
-
-        /* ==================================================
-           ESC KEY
-        ================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (
-                    event.key === "Escape" &&
-                    quizPopup.classList.contains(
-                        "show"
-                    )
-                ) {
-
-                    closePopup();
-
-                }
-
-            }
-        );
-
-
-        /* ==================================================
-           NAVIGATION INSIDE IFRAME
-        ================================================== */
-
-        quizFrame.addEventListener(
-            "load",
-            function() {
-
-                try {
-
-                    const iframeDocument =
-                        quizFrame.contentDocument ||
-                        quizFrame.contentWindow.document;
-
-
-                    /*
-                     * Get all links
-                     * inside current page
-                     */
-
-                    const links =
-                        iframeDocument.querySelectorAll(
-                            "a"
-                        );
-
-
-                    links.forEach(
-                        function(link) {
-
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
-
-
-                            if (!href) {
-
-                                return;
-
-                            }
-
-
-                            /*
-                             * ACTIVITIES
-                             */
-
-                            if (
-                                href
-                                .toLowerCase()
-                                .endsWith(
-                                    "activities.html"
-                                )
-                            ) {
-
-                                link.addEventListener(
-                                    "click",
-                                    function(event) {
-
-                                        event.preventDefault();
-
-                                        openPopup(
-                                            "activities.html",
-                                            "💗 My Activities"
-                                        );
-
-                                    }
-                                );
-
-                            }
-
-
-                            /*
-                             * QUIZZES
-                             */
-
-                            if (
-                                href
-                                .toLowerCase()
-                                .endsWith(
-                                    "quizzes.html"
-                                )
-                            ) {
-
-                                link.addEventListener(
-                                    "click",
-                                    function(event) {
-
-                                        event.preventDefault();
-
-                                        openPopup(
-                                            "quizzes.html",
-                                            "💗 My Quizzes"
-                                        );
-
-                                    }
-                                );
-
-                            }
-
-
-                            /*
-                             * EXAM
-                             */
-
-                            if (
-                                href
-                                .toLowerCase()
-                                .endsWith(
-                                    "exam.html"
-                                )
-                            ) {
-
-                                link.addEventListener(
-                                    "click",
-                                    function(event) {
-
-                                        event.preventDefault();
-
-                                        openPopup(
-                                            "exam.html",
-                                            "💗 My Exam"
-                                        );
-
-                                    }
-                                );
-
-                            }
-
-
-                            /*
-                             * HOME
-                             */
-
-                            if (
-                                href
-                                .toLowerCase()
-                                .endsWith(
-                                    "index.html"
-                                )
-                            ) {
-
-                                link.addEventListener(
-                                    "click",
-                                    function(event) {
-
-                                        event.preventDefault();
-
-                                        closePopup();
-
-                                    }
-                                );
-
-                            }
-
-                        }
+                ]
+            };
+
+            if (pages[filename]) {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+
+                    openPopup(
+                        pages[filename][0],
+                        pages[filename][1]
                     );
-
-                }
-
-                catch (error) {
-
-                    console.log(
-                        "Iframe navigation error:",
-                        error
-                    );
-
-                }
-
+                });
             }
-        );
 
-    </script>
+            if (filename === "index.html") {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    closePopup();
+                });
+            }
+        });
+    } catch (error) {
+        console.log("Iframe navigation error:", error);
+    }
+});
 
+/* INITIAL ANIMATION */
+window.addEventListener("load", function() {
+    homeSection.style.animation = "none";
+    void homeSection.offsetWidth;
+    homeSection.style.animation = "";
+});
+</script>
 
 </body>
-
 </html>
