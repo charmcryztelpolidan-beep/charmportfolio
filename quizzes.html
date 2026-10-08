@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,10 +16,6 @@
         rel="stylesheet">
 
     <style>
-
-        /* =========================
-           GENERAL
-        ========================= */
 
         * {
             box-sizing: border-box;
@@ -39,23 +34,17 @@
             min-height: 100vh;
         }
 
-
-        /* =========================
-           CUSTOM CURSOR
-        ========================= */
+        /* ========================= CUSTOM CURSOR ========================= */
 
         .custom-cursor {
             position: fixed;
             width: 20px;
             height: 20px;
-
             background-color: #f3a9c2;
             border: 3px solid white;
             border-radius: 50%;
-
             pointer-events: none;
             transform: translate(-50%, -50%);
-
             z-index: 10000;
 
             box-shadow:
@@ -70,7 +59,6 @@
         .custom-cursor.hover {
             width: 30px;
             height: 30px;
-
             background-color: rgba(243, 169, 194, 0.6);
 
             box-shadow:
@@ -78,57 +66,37 @@
                 0 0 25px #f3a9c2;
         }
 
-
-        /* =========================
-           CURSOR TRAIL
-        ========================= */
+        /* ========================= CURSOR TRAIL ========================= */
 
         #cursorTrail {
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             pointer-events: none;
-
             z-index: 9998;
         }
 
-
-        /* =========================
-           FLOATING HEARTS
-        ========================= */
+        /* ========================= FLOATING HEARTS ========================= */
 
         .floating-hearts {
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             overflow: hidden;
-
             pointer-events: none;
-
             z-index: 0;
         }
 
         .floating-hearts span {
             position: absolute;
-
             bottom: -50px;
-
             color: #e88aaa;
-
             font-size: 35px;
-
             opacity: 0.45;
-
             animation: floatUp 10s linear infinite;
         }
 
@@ -183,10 +151,7 @@
         @keyframes floatUp {
 
             0% {
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-
+                transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
 
@@ -195,155 +160,45 @@
             }
 
             50% {
-                transform:
-                    translateY(-400px)
-                    rotate(20deg);
+                transform: translateY(-400px) rotate(20deg);
             }
 
             100% {
-                transform:
-                    translateY(-100vh)
-                    rotate(-20deg);
-
+                transform: translateY(-100vh) rotate(-20deg);
                 opacity: 0;
             }
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
+        /* ========================= HEADER ========================= */
 
         header {
             position: relative;
-
             z-index: 10;
-
             background-color: #fce4ec;
-
             padding: 30px 50px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
+            height: 100px;
         }
 
-        header h1 {
-            margin: 0;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 35px;
-        }
-
-
-        /* =========================
-           NAVIGATION - HOME ONLY
-        ========================= */
-
-        nav {
-            display: flex;
-
-            gap: 15px;
-
-            margin-left: auto;
-        }
-
-        nav a {
-            text-decoration: none;
-
-            color: #222;
-
-            border: 2px solid #f3a9c2;
-
-            border-radius: 10px;
-
-            padding: 12px 25px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 22px;
-
-            font-weight: 700;
-
-            background-color: white;
-
-            transition: 0.3s ease;
-
-            cursor: none;
-        }
-
-        nav a:hover {
-            background-color: #ffe0eb;
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 5px 15px rgba(201, 79, 124, 0.2);
-        }
-
-        nav a i {
-            width: 45px;
-            height: 45px;
-
-            border-radius: 50%;
-
-            background-color: #f3a9c2;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: transparent;
-
-            font-size: 0;
-
-            flex-shrink: 0;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
+        /* ========================= MAIN ========================= */
 
         main {
             position: relative;
-
             z-index: 2;
-
             text-align: center;
-
             padding: 60px 20px;
         }
 
         main h2 {
             font-family: "Comic Neue", sans-serif;
-
             font-size: 35px;
-
             margin-bottom: 35px;
-
             color: #292929;
         }
 
-
-        /* =========================
-           QUIZ CONTAINER
-        ========================= */
+        /* ========================= QUIZ CONTAINER ========================= */
 
         #quizzesContainer {
             max-width: 1100px;
-
             margin: 0 auto;
 
             display: grid;
@@ -354,26 +209,19 @@
             gap: 25px;
 
             justify-content: center;
-
             align-items: start;
         }
 
-
-        /* =========================
-           QUIZ CARD
-        ========================= */
+        /* ========================= QUIZ CARD ========================= */
 
         .quiz-card {
             position: relative;
 
             border: 2px solid #f3a9c2;
-
             border-radius: 15px;
-
             overflow: hidden;
 
             background-color: white;
-
             text-align: left;
 
             box-shadow:
@@ -393,91 +241,59 @@
                 0 12px 25px rgba(201, 79, 124, 0.25);
         }
 
-
-        /* =========================
-           QUIZ IMAGE
-        ========================= */
+        /* ========================= QUIZ IMAGE ========================= */
 
         .quiz-image-container {
             width: 100%;
-
             height: 200px;
-
             background-color: white;
-
             overflow: hidden;
-
             cursor: none;
         }
 
         .quiz-image-container img {
             width: 100%;
-
             height: 100%;
-
             object-fit: cover;
-
             display: block;
 
             transition:
                 transform 0.4s ease;
         }
 
-        .quiz-card:hover
-        .quiz-image-container img {
+        .quiz-card:hover .quiz-image-container img {
             transform: scale(1.05);
         }
 
-
-        /* =========================
-           QUIZ INFORMATION
-        ========================= */
+        /* ========================= QUIZ INFORMATION ========================= */
 
         .quiz-info {
             padding: 12px 14px 14px;
-
             background-color: #f8d8e5;
-
             color: #333;
         }
 
         .quiz-name {
             font-family: "Comic Neue", sans-serif;
-
             font-size: 18px;
-
             font-weight: 700;
-
             margin-bottom: 3px;
-
             color: #333;
         }
 
-
-        /* SCORE AND DATE */
-
         .quiz-details {
             font-family: "Comic Neue", sans-serif;
-
             font-size: 15px;
-
             font-weight: 700;
-
             color: #e88aaa;
         }
 
-        .quiz-details .score {
-            color: #e88aaa;
-        }
-
+        .quiz-details .score,
         .quiz-details .date {
             color: #e88aaa;
         }
 
-
-        /* =========================
-           IMAGE MODAL
-        ========================= */
+        /* ========================= IMAGE MODAL ========================= */
 
         .image-modal {
             display: none;
@@ -492,11 +308,9 @@
             width: 100%;
             height: 100%;
 
-            background-color:
-                rgba(20, 10, 25, 0.88);
+            background-color: rgba(20, 10, 25, 0.88);
 
             align-items: center;
-
             justify-content: center;
 
             padding: 30px;
@@ -506,16 +320,10 @@
             display: flex;
         }
 
-
-        /* =========================
-           MODAL CONTENT
-        ========================= */
-
         .modal-content {
             position: relative;
 
             max-width: 900px;
-
             max-height: 90vh;
 
             background-color: white;
@@ -527,8 +335,7 @@
             box-shadow:
                 0 0 40px rgba(243, 169, 194, 0.5);
 
-            animation:
-                popup 0.3s ease;
+            animation: popup 0.3s ease;
         }
 
         @keyframes popup {
@@ -548,7 +355,6 @@
             display: block;
 
             max-width: 100%;
-
             max-height: 75vh;
 
             object-fit: contain;
@@ -558,10 +364,7 @@
             margin: auto;
         }
 
-
-        /* =========================
-           MODAL DETAILS
-        ========================= */
+        /* ========================= MODAL DETAILS ========================= */
 
         .modal-details {
             text-align: center;
@@ -593,24 +396,18 @@
             color: #e88aaa;
         }
 
-
-        /* =========================
-           CLOSE BUTTON
-        ========================= */
+        /* ========================= MODAL X ========================= */
 
         .close-modal {
             position: absolute;
 
             top: -15px;
-
             right: -15px;
 
             width: 38px;
-
             height: 38px;
 
             border: none;
-
             border-radius: 50%;
 
             background-color: #f3a9c2;
@@ -618,7 +415,6 @@
             color: white;
 
             font-size: 22px;
-
             font-weight: bold;
 
             cursor: none;
@@ -631,40 +427,13 @@
             background-color: #df789d;
         }
 
-
-        /* =========================
-           MOBILE
-        ========================= */
+        /* ========================= MOBILE ========================= */
 
         @media (max-width: 800px) {
 
             header {
-                flex-direction: column;
-
-                gap: 25px;
-
-                text-align: center;
-
-                padding: 25px;
-            }
-
-            nav {
-                flex-wrap: wrap;
-
-                justify-content: center;
-
-                margin-left: 0;
-            }
-
-            nav a {
-                font-size: 16px;
-
-                padding: 10px 15px;
-            }
-
-            nav a i {
-                width: 35px;
-                height: 35px;
+                height: 80px;
+                padding: 20px 25px;
             }
 
             main {
@@ -677,7 +446,6 @@
 
             #quizzesContainer {
                 grid-template-columns: 1fr;
-
                 max-width: 400px;
             }
 
@@ -687,23 +455,16 @@
 
             .modal-content {
                 max-width: 95%;
-
                 padding: 10px;
             }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =========================
-         FLOATING HEARTS
-    ========================= -->
+    <!-- ========================= FLOATING HEARTS ========================= -->
 
     <div class="floating-hearts">
 
@@ -718,48 +479,19 @@
 
     </div>
 
+    <!-- ========================= HEADER ========================= -->
 
-    <!-- =========================
-         HEADER
-         HOME ONLY
-    ========================= -->
+    <header></header>
 
-    <header>
-
-        <h1></h1>
-
-        <nav>
-
-            <a href="index.html" onclick="goHome(event)">
-
-                <i class="fa-solid fa-house"></i>
-
-                Home
-
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <!-- =========================
-         MAIN
-    ========================= -->
+    <!-- ========================= MAIN ========================= -->
 
     <main>
 
-        <h2>
-            My Quizzes
-        </h2>
-
+        <h2>My Quizzes</h2>
 
         <div id="quizzesContainer">
 
-
-            <!-- =========================
-                 QUIZ 1
-            ========================= -->
+            <!-- ========================= QUIZ 1 ========================= -->
 
             <div
                 class="quiz-card"
@@ -770,9 +502,6 @@
                     'August 25, 2026'
                 )">
 
-
-                <!-- QUIZ IMAGE -->
-
                 <div class="quiz-image-container">
 
                     <img
@@ -781,32 +510,154 @@
 
                 </div>
 
-
-                <!-- QUIZ INFORMATION -->
-
                 <div class="quiz-info">
 
                     <div class="quiz-name">
-
                         Quiz 1
-
                     </div>
-
 
                     <div class="quiz-details">
 
                         <span class="score">
-
                             Score: 17/20
-
                         </span>
 
                         •
 
                         <span class="date">
-
                             August 25, 2026
+                        </span>
 
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= QUIZ 2 ========================= -->
+
+            <div
+                class="quiz-card"
+                onclick="openQuiz(
+                    'Image.png/Screenshot 2026-10-05 171656.png',
+                    'Quiz 2',
+                    'Score: 17/20',
+                    'October 05, 2026'
+                )">
+
+                <div class="quiz-image-container">
+
+                    <img
+                        src="Image.png/Screenshot 2026-10-05 171656.png"
+                        alt="Quiz 2">
+
+                </div>
+
+                <div class="quiz-info">
+
+                    <div class="quiz-name">
+                        Quiz 2
+                    </div>
+
+                    <div class="quiz-details">
+
+                        <span class="score">
+                            Score: 17/20
+                        </span>
+
+                        •
+
+                        <span class="date">
+                            October 5, 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= QUIZ 3 ========================= -->
+
+            <div
+                class="quiz-card"
+                onclick="openQuiz(
+                    'Image/Screenshot 2026-10-05 181121.png',
+                    'Quiz 3',
+                    'Score: 17/20',
+                    'October 05, 2026'
+                )">
+
+                <div class="quiz-image-container">
+
+                    <img
+                        src="Image/Screenshot 2026-10-05 181121.png"
+                        alt="Quiz 3">
+
+                </div>
+
+                <div class="quiz-info">
+
+                    <div class="quiz-name">
+                        Quiz 3
+                    </div>
+
+                    <div class="quiz-details">
+
+                        <span class="score">
+                            Score: 17/20
+                        </span>
+
+                        •
+
+                        <span class="date">
+                           October 05, 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= LONG QUIZ ========================= -->
+
+            <div
+                class="quiz-card"
+                onclick="openQuiz(
+                    'Quiz/Screenshot 2026-10-05 233728.png',
+                    'Long Quiz',
+                    'Score: 32/45',
+                    'October 05, 2026'
+                )">
+
+                <div class="quiz-image-container">
+
+                    <img
+                        src="Quiz/Screenshot 2026-10-05 233728.png"
+                        alt="Long Quiz">
+
+                </div>
+
+                <div class="quiz-info">
+
+                    <div class="quiz-name">
+                        Long Quiz
+                    </div>
+
+                    <div class="quiz-details">
+
+                        <span class="score">
+                            Score: 32/45
+                        </span>
+
+                        •
+
+                        <span class="date">
+                           October 05, 2026
                         </span>
 
                     </div>
@@ -820,47 +671,32 @@
     </main>
 
 
-    <!-- =========================
-         IMAGE MODAL
-    ========================= -->
+    <!-- ========================= IMAGE MODAL ========================= -->
 
     <div
         class="image-modal"
         id="imageModal">
 
-
         <div class="modal-content">
 
-
-            <!-- CLOSE BUTTON -->
+            <!-- X PARA SA PAG-CLOSE NG IMAGE -->
 
             <button
                 class="close-modal"
                 onclick="closeQuiz()">
-
                 ×
-
             </button>
-
-
-            <!-- LARGE IMAGE -->
 
             <img
                 id="modalImage"
                 src=""
                 alt="Quiz Image">
 
-
-            <!-- QUIZ DETAILS -->
-
             <div class="modal-details">
 
                 <h3 id="modalTitle">
-
                     Quiz 1
-
                 </h3>
-
 
                 <p>
 
@@ -879,58 +715,18 @@
     </div>
 
 
-    <!-- =========================
-         CURSOR TRAIL
-    ========================= -->
+    <!-- ========================= CURSOR TRAIL ========================= -->
 
     <canvas id="cursorTrail"></canvas>
 
-
-    <!-- =========================
-         CUSTOM CURSOR
-    ========================= -->
+    <!-- ========================= CUSTOM CURSOR ========================= -->
 
     <div class="custom-cursor"></div>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
     <script>
 
-
-        /* ==================================================
-           HOME BUTTON
-        ================================================== */
-
-        function goHome(event) {
-
-            event.preventDefault();
-
-            /*
-             * Dahil ang quizzes.html ay nasa iframe
-             * ng index.html, window.top ang gagamitin.
-             *
-             * Babalik ito sa mismong main Home page.
-             */
-
-            if (window.top !== window.self) {
-
-                window.top.location.href = "index.html";
-
-            } else {
-
-                window.location.href = "index.html";
-
-            }
-
-        }
-
-
-        /* =========================
-           IMAGE MODAL
-        ========================= */
+        /* ========================= IMAGE MODAL ========================= */
 
         const modal =
             document.getElementById("imageModal");
@@ -975,41 +771,35 @@
         }
 
 
-        /* Close when clicking outside */
+        /* ========================= CLOSE MODAL OUTSIDE ========================= */
 
         modal.addEventListener(
             "click",
             function(event) {
 
                 if (event.target === modal) {
-
                     closeQuiz();
-
                 }
 
             }
         );
 
 
-        /* Close using ESC */
+        /* ========================= ESC ========================= */
 
         document.addEventListener(
             "keydown",
             function(event) {
 
                 if (event.key === "Escape") {
-
                     closeQuiz();
-
                 }
 
             }
         );
 
 
-        /* =========================
-           CUSTOM CURSOR
-        ========================= */
+        /* ========================= CUSTOM CURSOR ========================= */
 
         const cursor =
             document.querySelector(".custom-cursor");
@@ -1020,10 +810,6 @@
         const ctx =
             canvas.getContext("2d");
 
-
-        /* =========================
-           CANVAS SIZE
-        ========================= */
 
         function resizeCanvas() {
 
@@ -1038,10 +824,6 @@
         resizeCanvas();
 
 
-        /* =========================
-           MOUSE POSITION
-        ========================= */
-
         let mouseX =
             window.innerWidth / 2;
 
@@ -1053,19 +835,15 @@
             "mousemove",
             function(event) {
 
-                mouseX =
-                    event.clientX;
+                mouseX = event.clientX;
 
-                mouseY =
-                    event.clientY;
-
+                mouseY = event.clientY;
 
                 cursor.style.left =
                     mouseX + "px";
 
                 cursor.style.top =
                     mouseY + "px";
-
 
                 createHeart(
                     mouseX,
@@ -1076,9 +854,7 @@
         );
 
 
-        /* =========================
-           HEART PARTICLES
-        ========================= */
+        /* ========================= HEART PARTICLES ========================= */
 
         let hearts = [];
 
@@ -1109,17 +885,13 @@
 
 
             if (hearts.length > 45) {
-
                 hearts.shift();
-
             }
 
         }
 
 
-        /* =========================
-           DRAW HEART
-        ========================= */
+        /* ========================= DRAW HEART ========================= */
 
         function drawHeart(
             x,
@@ -1131,10 +903,7 @@
 
             ctx.save();
 
-            ctx.translate(
-                x,
-                y
-            );
+            ctx.translate(x, y);
 
             ctx.rotate(
                 rotation *
@@ -1148,8 +917,7 @@
             ctx.fillStyle =
                 "#f3a9c2";
 
-            ctx.shadowBlur =
-                12;
+            ctx.shadowBlur = 12;
 
             ctx.shadowColor =
                 "#f3a9c2";
@@ -1194,9 +962,7 @@
         }
 
 
-        /* =========================
-           ANIMATION
-        ========================= */
+        /* ========================= ANIMATION ========================= */
 
         function animate() {
 
@@ -1216,7 +982,6 @@
 
                 const heart =
                     hearts[i];
-
 
                 heart.x +=
                     heart.speedX;
@@ -1240,14 +1005,9 @@
                 );
 
 
-                if (
-                    heart.opacity <= 0
-                ) {
+                if (heart.opacity <= 0) {
 
-                    hearts.splice(
-                        i,
-                        1
-                    );
+                    hearts.splice(i, 1);
 
                 }
 
@@ -1260,31 +1020,24 @@
 
         }
 
-
         animate();
 
 
-        /* =========================
-           RESIZE
-        ========================= */
+        /* ========================= RESIZE ========================= */
 
         window.addEventListener(
             "resize",
             function() {
-
                 resizeCanvas();
-
             }
         );
 
 
-        /* =========================
-           CURSOR HOVER
-        ========================= */
+        /* ========================= CURSOR HOVER ========================= */
 
         const clickableElements =
             document.querySelectorAll(
-                "a, button, .quiz-card"
+                "button, .quiz-card"
             );
 
 
