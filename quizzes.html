@@ -1,22 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Quizzes - My Portfolio</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
 
     <!-- Cute Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -34,10 +37,12 @@
             min-height: 100vh;
         }
 
-        /* ========================= CUSTOM CURSOR ========================= */
+        /* CUSTOM CURSOR */
 
         .custom-cursor {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 20px;
             height: 20px;
             background-color: #f3a9c2;
@@ -45,7 +50,8 @@
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            z-index: 10000;
+            z-index: 30000;
+            opacity: 0;
 
             box-shadow:
                 0 0 8px #f3a9c2,
@@ -53,7 +59,8 @@
 
             transition:
                 width 0.15s ease,
-                height 0.15s ease;
+                height 0.15s ease,
+                opacity 0.15s ease;
         }
 
         .custom-cursor.hover {
@@ -66,7 +73,7 @@
                 0 0 25px #f3a9c2;
         }
 
-        /* ========================= CURSOR TRAIL ========================= */
+        /* CURSOR TRAIL */
 
         #cursorTrail {
             position: fixed;
@@ -78,7 +85,7 @@
             z-index: 9998;
         }
 
-        /* ========================= FLOATING HEARTS ========================= */
+        /* FLOATING HEARTS */
 
         .floating-hearts {
             position: fixed;
@@ -149,7 +156,6 @@
         }
 
         @keyframes floatUp {
-
             0% {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
@@ -169,7 +175,7 @@
             }
         }
 
-        /* ========================= HEADER ========================= */
+        /* HEADER */
 
         header {
             position: relative;
@@ -179,7 +185,7 @@
             height: 100px;
         }
 
-        /* ========================= MAIN ========================= */
+        /* MAIN */
 
         main {
             position: relative;
@@ -195,32 +201,25 @@
             color: #292929;
         }
 
-        /* ========================= QUIZ CONTAINER ========================= */
+        /* QUIZ CONTAINER */
 
         #quizzesContainer {
             max-width: 1100px;
             margin: 0 auto;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 300px));
-
+            grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
             gap: 25px;
-
             justify-content: center;
             align-items: start;
         }
 
-        /* ========================= QUIZ CARD ========================= */
+        /* QUIZ CARD */
 
         .quiz-card {
             position: relative;
-
             border: 2px solid #f3a9c2;
             border-radius: 15px;
             overflow: hidden;
-
             background-color: white;
             text-align: left;
 
@@ -241,7 +240,7 @@
                 0 12px 25px rgba(201, 79, 124, 0.25);
         }
 
-        /* ========================= QUIZ IMAGE ========================= */
+        /* QUIZ IMAGE */
 
         .quiz-image-container {
             width: 100%;
@@ -256,16 +255,14 @@
             height: 100%;
             object-fit: cover;
             display: block;
-
-            transition:
-                transform 0.4s ease;
+            transition: transform 0.4s ease;
         }
 
         .quiz-card:hover .quiz-image-container img {
             transform: scale(1.05);
         }
 
-        /* ========================= QUIZ INFORMATION ========================= */
+        /* QUIZ INFORMATION */
 
         .quiz-info {
             padding: 12px 14px 14px;
@@ -293,26 +290,20 @@
             color: #e88aaa;
         }
 
-        /* ========================= IMAGE MODAL ========================= */
+        /* IMAGE MODAL */
 
         .image-modal {
             display: none;
-
             position: fixed;
-
             z-index: 20000;
-
             left: 0;
             top: 0;
-
             width: 100%;
             height: 100%;
-
             background-color: rgba(20, 10, 25, 0.88);
 
             align-items: center;
             justify-content: center;
-
             padding: 30px;
         }
 
@@ -322,14 +313,10 @@
 
         .modal-content {
             position: relative;
-
             max-width: 900px;
             max-height: 90vh;
-
             background-color: white;
-
             padding: 15px;
-
             border-radius: 15px;
 
             box-shadow:
@@ -339,7 +326,6 @@
         }
 
         @keyframes popup {
-
             from {
                 transform: scale(0.8);
                 opacity: 0;
@@ -353,71 +339,52 @@
 
         .modal-content img {
             display: block;
-
             max-width: 100%;
             max-height: 75vh;
-
             object-fit: contain;
-
             border-radius: 8px;
-
             margin: auto;
         }
 
-        /* ========================= MODAL DETAILS ========================= */
+        /* MODAL DETAILS */
 
         .modal-details {
             text-align: center;
-
             font-family: "Comic Neue", sans-serif;
-
             padding-top: 12px;
-
             color: #333;
         }
 
         .modal-details h3 {
             margin: 0 0 5px;
-
             font-size: 22px;
-
             font-family: "Comic Neue", sans-serif;
         }
 
         .modal-details p {
             margin: 0;
-
             font-size: 16px;
-
             font-family: "Comic Neue", sans-serif;
-
             font-weight: 700;
-
             color: #e88aaa;
         }
 
-        /* ========================= MODAL X ========================= */
+        /* CLOSE BUTTON */
 
         .close-modal {
             position: absolute;
-
             top: -15px;
             right: -15px;
-
             width: 38px;
             height: 38px;
-
             border: none;
             border-radius: 50%;
-
             background-color: #f3a9c2;
-
             color: white;
-
             font-size: 22px;
             font-weight: bold;
-
             cursor: none;
+            z-index: 20001;
 
             box-shadow:
                 0 3px 10px rgba(0, 0, 0, 0.25);
@@ -427,10 +394,9 @@
             background-color: #df789d;
         }
 
-        /* ========================= MOBILE ========================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
-
             header {
                 height: 80px;
                 padding: 20px 25px;
@@ -457,17 +423,39 @@
                 max-width: 95%;
                 padding: 10px;
             }
+
+            .image-modal {
+                padding: 20px;
+            }
+
+            .close-modal {
+                top: -12px;
+                right: -12px;
+            }
         }
 
+        /* DEVICES WITHOUT A MOUSE */
+
+        @media (hover: none), (pointer: coarse) {
+            body,
+            .quiz-card,
+            .quiz-image-container,
+            .close-modal {
+                cursor: auto;
+            }
+
+            .custom-cursor {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- ========================= FLOATING HEARTS ========================= -->
+    <!-- FLOATING HEARTS -->
 
     <div class="floating-hearts">
-
         <span>♡</span>
         <span>♡</span>
         <span>♡</span>
@@ -476,22 +464,20 @@
         <span>♡</span>
         <span>♡</span>
         <span>♡</span>
-
     </div>
 
-    <!-- ========================= HEADER ========================= -->
+    <!-- HEADER -->
 
     <header></header>
 
-    <!-- ========================= MAIN ========================= -->
+    <!-- MAIN -->
 
     <main>
-
         <h2>My Quizzes</h2>
 
         <div id="quizzesContainer">
 
-            <!-- ========================= QUIZ 1 ========================= -->
+            <!-- QUIZ 1 -->
 
             <div
                 class="quiz-card"
@@ -500,42 +486,26 @@
                     'Quiz 1',
                     'Score: 17/20',
                     'August 25, 2026'
-                )">
-
+                )"
+            >
                 <div class="quiz-image-container">
-
                     <img
                         src="Image.webp/2a33d924-1cdf-4102-9f0e-dae69878b9f5.jpg"
-                        alt="Quiz 1">
-
+                        alt="Quiz 1"
+                    >
                 </div>
 
                 <div class="quiz-info">
-
-                    <div class="quiz-name">
-                        Quiz 1
-                    </div>
-
+                    <div class="quiz-name">Quiz 1</div>
                     <div class="quiz-details">
-
-                        <span class="score">
-                            Score: 17/20
-                        </span>
-
+                        <span class="score">Score: 17/20</span>
                         •
-
-                        <span class="date">
-                            August 25, 2026
-                        </span>
-
+                        <span class="date">August 25, 2026</span>
                     </div>
-
                 </div>
-
             </div>
 
-
-            <!-- ========================= QUIZ 2 ========================= -->
+            <!-- QUIZ 2 -->
 
             <div
                 class="quiz-card"
@@ -544,42 +514,26 @@
                     'Quiz 2',
                     'Score: 17/20',
                     'October 05, 2026'
-                )">
-
+                )"
+            >
                 <div class="quiz-image-container">
-
                     <img
                         src="Image.png/Screenshot 2026-10-05 171656.png"
-                        alt="Quiz 2">
-
+                        alt="Quiz 2"
+                    >
                 </div>
 
                 <div class="quiz-info">
-
-                    <div class="quiz-name">
-                        Quiz 2
-                    </div>
-
+                    <div class="quiz-name">Quiz 2</div>
                     <div class="quiz-details">
-
-                        <span class="score">
-                            Score: 17/20
-                        </span>
-
+                        <span class="score">Score: 17/20</span>
                         •
-
-                        <span class="date">
-                            October 5, 2026
-                        </span>
-
+                        <span class="date">October 5, 2026</span>
                     </div>
-
                 </div>
-
             </div>
 
-
-            <!-- ========================= QUIZ 3 ========================= -->
+            <!-- QUIZ 3 -->
 
             <div
                 class="quiz-card"
@@ -588,42 +542,26 @@
                     'Quiz 3',
                     'Score: 17/20',
                     'October 05, 2026'
-                )">
-
+                )"
+            >
                 <div class="quiz-image-container">
-
                     <img
                         src="Image/Screenshot 2026-10-05 181121.png"
-                        alt="Quiz 3">
-
+                        alt="Quiz 3"
+                    >
                 </div>
 
                 <div class="quiz-info">
-
-                    <div class="quiz-name">
-                        Quiz 3
-                    </div>
-
+                    <div class="quiz-name">Quiz 3</div>
                     <div class="quiz-details">
-
-                        <span class="score">
-                            Score: 17/20
-                        </span>
-
+                        <span class="score">Score: 17/20</span>
                         •
-
-                        <span class="date">
-                           October 05, 2026
-                        </span>
-
+                        <span class="date">October 05, 2026</span>
                     </div>
-
                 </div>
-
             </div>
 
-
-            <!-- ========================= LONG QUIZ ========================= -->
+            <!-- LONG QUIZ -->
 
             <div
                 class="quiz-card"
@@ -632,369 +570,207 @@
                     'Long Quiz',
                     'Score: 32/45',
                     'October 05, 2026'
-                )">
-
+                )"
+            >
                 <div class="quiz-image-container">
-
                     <img
                         src="Quiz/Screenshot 2026-10-05 233728.png"
-                        alt="Long Quiz">
-
+                        alt="Long Quiz"
+                    >
                 </div>
 
                 <div class="quiz-info">
-
-                    <div class="quiz-name">
-                        Long Quiz
-                    </div>
-
+                    <div class="quiz-name">Long Quiz</div>
                     <div class="quiz-details">
-
-                        <span class="score">
-                            Score: 32/45
-                        </span>
-
+                        <span class="score">Score: 32/45</span>
                         •
-
-                        <span class="date">
-                           October 05, 2026
-                        </span>
-
+                        <span class="date">October 05, 2026</span>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </main>
 
+    <!-- IMAGE MODAL -->
 
-    <!-- ========================= IMAGE MODAL ========================= -->
-
-    <div
-        class="image-modal"
-        id="imageModal">
-
+    <div class="image-modal" id="imageModal">
         <div class="modal-content">
-
-            <!-- X PARA SA PAG-CLOSE NG IMAGE -->
 
             <button
                 class="close-modal"
-                onclick="closeQuiz()">
+                id="closeModalButton"
+                onclick="closeQuiz()"
+                aria-label="Close quiz image"
+                type="button"
+            >
                 ×
             </button>
 
             <img
                 id="modalImage"
                 src=""
-                alt="Quiz Image">
+                alt="Quiz Image"
+            >
 
             <div class="modal-details">
-
-                <h3 id="modalTitle">
-                    Quiz 1
-                </h3>
-
+                <h3 id="modalTitle">Quiz 1</h3>
                 <p>
-
                     <span id="modalScore"></span>
-
                     &nbsp; • &nbsp;
-
                     <span id="modalDate"></span>
-
                 </p>
-
             </div>
 
         </div>
-
     </div>
 
-
-    <!-- ========================= CURSOR TRAIL ========================= -->
+    <!-- CURSOR TRAIL -->
 
     <canvas id="cursorTrail"></canvas>
 
-    <!-- ========================= CUSTOM CURSOR ========================= -->
+    <!-- CUSTOM CURSOR -->
 
     <div class="custom-cursor"></div>
 
-
     <script>
+        /* IMAGE MODAL */
 
-        /* ========================= IMAGE MODAL ========================= */
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalScore = document.getElementById("modalScore");
+        const modalDate = document.getElementById("modalDate");
+        const closeModalButton = document.getElementById("closeModalButton");
 
-        const modal =
-            document.getElementById("imageModal");
-
-        const modalImage =
-            document.getElementById("modalImage");
-
-        const modalTitle =
-            document.getElementById("modalTitle");
-
-        const modalScore =
-            document.getElementById("modalScore");
-
-        const modalDate =
-            document.getElementById("modalDate");
-
-
-        function openQuiz(
-            image,
-            title,
-            score,
-            date
-        ) {
-
+        function openQuiz(image, title, score, date) {
             modalImage.src = image;
-
             modalTitle.textContent = title;
-
             modalScore.textContent = score;
-
             modalDate.textContent = date;
 
             modal.classList.add("show");
-
+            cursor.style.opacity = "1";
+            cursor.style.zIndex = "30000";
         }
-
 
         function closeQuiz() {
-
             modal.classList.remove("show");
-
         }
 
+        /* CLOSE WHEN CLICKING OUTSIDE THE IMAGE */
 
-        /* ========================= CLOSE MODAL OUTSIDE ========================= */
-
-        modal.addEventListener(
-            "click",
-            function(event) {
-
-                if (event.target === modal) {
-                    closeQuiz();
-                }
-
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                closeQuiz();
             }
-        );
+        });
 
+        /* ESC KEY */
 
-        /* ========================= ESC ========================= */
-
-        document.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key === "Escape") {
-                    closeQuiz();
-                }
-
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && modal.classList.contains("show")) {
+                closeQuiz();
             }
-        );
+        });
 
+        /* CUSTOM CURSOR */
 
-        /* ========================= CUSTOM CURSOR ========================= */
-
-        const cursor =
-            document.querySelector(".custom-cursor");
-
-        const canvas =
-            document.getElementById("cursorTrail");
-
-        const ctx =
-            canvas.getContext("2d");
-
+        const cursor = document.querySelector(".custom-cursor");
+        const canvas = document.getElementById("cursorTrail");
+        const ctx = canvas.getContext("2d");
 
         function resizeCanvas() {
-
-            canvas.width =
-                window.innerWidth;
-
-            canvas.height =
-                window.innerHeight;
-
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
 
         resizeCanvas();
 
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
 
-        let mouseX =
-            window.innerWidth / 2;
+        document.addEventListener("mousemove", function(event) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
 
-        let mouseY =
-            window.innerHeight / 2;
+            cursor.style.left = mouseX + "px";
+            cursor.style.top = mouseY + "px";
+            cursor.style.opacity = "1";
 
+            createHeart(mouseX, mouseY);
+        });
 
-        document.addEventListener(
-            "mousemove",
-            function(event) {
+        document.addEventListener("mouseleave", function() {
+            cursor.style.opacity = "0";
+        });
 
-                mouseX = event.clientX;
+        document.addEventListener("mouseenter", function() {
+            cursor.style.opacity = "1";
+        });
 
-                mouseY = event.clientY;
-
-                cursor.style.left =
-                    mouseX + "px";
-
-                cursor.style.top =
-                    mouseY + "px";
-
-                createHeart(
-                    mouseX,
-                    mouseY
-                );
-
-            }
-        );
-
-
-        /* ========================= HEART PARTICLES ========================= */
+        /* HEART PARTICLES */
 
         let hearts = [];
 
-
         function createHeart(x, y) {
-
             hearts.push({
-
                 x: x,
-
                 y: y,
-
-                size:
-                    Math.random() * 10 + 8,
-
-                speedY:
-                    Math.random() * -1.5 - 0.5,
-
-                speedX:
-                    (Math.random() - 0.5) * 1.5,
-
+                size: Math.random() * 10 + 8,
+                speedY: Math.random() * -1.5 - 0.5,
+                speedX: (Math.random() - 0.5) * 1.5,
                 opacity: 1,
-
-                rotation:
-                    Math.random() * 360
-
+                rotation: Math.random() * 360
             });
-
 
             if (hearts.length > 45) {
                 hearts.shift();
             }
-
         }
 
+        /* DRAW HEART */
 
-        /* ========================= DRAW HEART ========================= */
-
-        function drawHeart(
-            x,
-            y,
-            size,
-            rotation,
-            opacity
-        ) {
-
+        function drawHeart(x, y, size, rotation, opacity) {
             ctx.save();
-
             ctx.translate(x, y);
-
-            ctx.rotate(
-                rotation *
-                Math.PI /
-                180
-            );
-
-            ctx.globalAlpha =
-                opacity;
-
-            ctx.fillStyle =
-                "#f3a9c2";
-
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = "#f3a9c2";
             ctx.shadowBlur = 12;
-
-            ctx.shadowColor =
-                "#f3a9c2";
+            ctx.shadowColor = "#f3a9c2";
 
             ctx.beginPath();
+            ctx.moveTo(0, size * 0.3);
 
-            ctx.moveTo(
-                0,
-                size * 0.3
+            ctx.bezierCurveTo(
+                -size, -size * 0.3,
+                -size * 0.6, -size,
+                0, -size * 0.35
             );
 
             ctx.bezierCurveTo(
-
-                -size,
-                -size * 0.3,
-
-                -size * 0.6,
-                -size,
-
-                0,
-                -size * 0.35
-
-            );
-
-            ctx.bezierCurveTo(
-
-                size * 0.6,
-                -size,
-
-                size,
-                -size * 0.3,
-
-                0,
-                size * 0.3
-
+                size * 0.6, -size,
+                size, -size * 0.3,
+                0, size * 0.3
             );
 
             ctx.fill();
-
             ctx.restore();
-
         }
 
-
-        /* ========================= ANIMATION ========================= */
+        /* ANIMATION */
 
         function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
+            for (let i = hearts.length - 1; i >= 0; i--) {
+                const heart = hearts[i];
 
-
-            for (
-                let i = hearts.length - 1;
-                i >= 0;
-                i--
-            ) {
-
-                const heart =
-                    hearts[i];
-
-                heart.x +=
-                    heart.speedX;
-
-                heart.y +=
-                    heart.speedY;
-
-                heart.opacity -=
-                    0.015;
-
-                heart.size *=
-                    0.995;
-
+                heart.x += heart.speedX;
+                heart.y += heart.speedY;
+                heart.opacity -= 0.015;
+                heart.size *= 0.995;
 
                 drawHeart(
                     heart.x,
@@ -1004,74 +780,46 @@
                     heart.opacity
                 );
 
-
                 if (heart.opacity <= 0) {
-
                     hearts.splice(i, 1);
-
                 }
-
             }
 
-
-            requestAnimationFrame(
-                animate
-            );
-
+            requestAnimationFrame(animate);
         }
 
         animate();
 
+        /* RESIZE CANVAS */
 
-        /* ========================= RESIZE ========================= */
+        window.addEventListener("resize", resizeCanvas);
 
-        window.addEventListener(
-            "resize",
-            function() {
-                resizeCanvas();
-            }
+        /* CURSOR HOVER EFFECT */
+
+        const clickableElements = document.querySelectorAll(
+            "button, .quiz-card"
         );
 
+        clickableElements.forEach(function(element) {
+            element.addEventListener("mouseenter", function() {
+                cursor.classList.add("hover");
+            });
 
-        /* ========================= CURSOR HOVER ========================= */
+            element.addEventListener("mouseleave", function() {
+                cursor.classList.remove("hover");
+            });
+        });
 
-        const clickableElements =
-            document.querySelectorAll(
-                "button, .quiz-card"
-            );
+        /* MAKE THE CURSOR GROW WHEN HOVERING OVER THE MODAL CLOSE BUTTON */
 
+        closeModalButton.addEventListener("mouseenter", function() {
+            cursor.classList.add("hover");
+        });
 
-        clickableElements.forEach(
-            function(element) {
-
-                element.addEventListener(
-                    "mouseenter",
-                    function() {
-
-                        cursor.classList.add(
-                            "hover"
-                        );
-
-                    }
-                );
-
-
-                element.addEventListener(
-                    "mouseleave",
-                    function() {
-
-                        cursor.classList.remove(
-                            "hover"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
+        closeModalButton.addEventListener("mouseleave", function() {
+            cursor.classList.remove("hover");
+        });
     </script>
 
 </body>
-
 </html>
