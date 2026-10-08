@@ -16,12 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
         rel="stylesheet">
 
-
     <style>
-
-        /* =========================
-           GENERAL
-        ========================= */
 
         * {
             box-sizing: border-box;
@@ -33,18 +28,12 @@
 
         body {
             margin: 0;
-
             font-family: Georgia, serif;
-
             background-color: #fffafa;
-
             color: #222;
-
-            min-height: 100vh;
-
             cursor: none;
+            min-height: 100vh;
         }
-
 
         /* =========================
            CUSTOM CURSOR
@@ -52,20 +41,13 @@
 
         .custom-cursor {
             position: fixed;
-
             width: 20px;
             height: 20px;
-
             background-color: #f3a9c2;
-
             border: 3px solid white;
-
             border-radius: 50%;
-
             pointer-events: none;
-
             transform: translate(-50%, -50%);
-
             z-index: 10000;
 
             box-shadow:
@@ -77,13 +59,9 @@
                 height 0.15s ease;
         }
 
-
-        /* Cursor hover effect */
-
         .custom-cursor.hover {
             width: 30px;
             height: 30px;
-
             background-color: rgba(243, 169, 194, 0.6);
 
             box-shadow:
@@ -91,61 +69,43 @@
                 0 0 25px #f3a9c2;
         }
 
-
         /* =========================
            CURSOR TRAIL
         ========================= */
 
         #cursorTrail {
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             pointer-events: none;
-
             z-index: 9998;
         }
 
-
         /* =========================
-           FLOATING HEART BACKGROUND
+           FLOATING HEARTS
         ========================= */
 
         .floating-hearts {
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             overflow: hidden;
-
             pointer-events: none;
-
             z-index: 0;
         }
 
-
         .floating-hearts span {
             position: absolute;
-
             bottom: -50px;
-
             color: #e88aaa;
-
             font-size: 35px;
-
             opacity: 0.45;
-
             animation: floatUp 10s linear infinite;
         }
-
 
         .floating-hearts span:nth-child(1) {
             left: 8%;
@@ -153,13 +113,11 @@
             font-size: 30px;
         }
 
-
         .floating-hearts span:nth-child(2) {
             left: 20%;
             animation-delay: 2s;
             font-size: 22px;
         }
-
 
         .floating-hearts span:nth-child(3) {
             left: 35%;
@@ -167,13 +125,11 @@
             font-size: 40px;
         }
 
-
         .floating-hearts span:nth-child(4) {
             left: 50%;
             animation-delay: 1s;
             font-size: 28px;
         }
-
 
         .floating-hearts span:nth-child(5) {
             left: 65%;
@@ -181,13 +137,11 @@
             font-size: 35px;
         }
 
-
         .floating-hearts span:nth-child(6) {
             left: 75%;
             animation-delay: 3s;
             font-size: 25px;
         }
-
 
         .floating-hearts span:nth-child(7) {
             left: 88%;
@@ -195,21 +149,16 @@
             font-size: 40px;
         }
 
-
         .floating-hearts span:nth-child(8) {
             left: 45%;
             animation-delay: 7s;
             font-size: 20px;
         }
 
-
         @keyframes floatUp {
 
             0% {
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-
+                transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
 
@@ -218,20 +167,15 @@
             }
 
             50% {
-                transform:
-                    translateY(-400px)
-                    rotate(20deg);
+                transform: translateY(-400px) rotate(20deg);
             }
 
             100% {
-                transform:
-                    translateY(-100vh)
-                    rotate(-20deg);
-
+                transform: translateY(-100vh) rotate(-20deg);
                 opacity: 0;
             }
-        }
 
+        }
 
         /* =========================
            HEADER
@@ -239,102 +183,10 @@
 
         header {
             position: relative;
-
             z-index: 10;
-
             background-color: #fce4ec;
-
-            padding: 30px 50px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
+            height: 40px;
         }
-
-
-        header h1 {
-            margin: 0;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 35px;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            display: flex;
-
-            gap: 15px;
-        }
-
-
-        nav a {
-            text-decoration: none;
-
-            color: #222;
-
-            border: 2px solid #f3a9c2;
-
-            border-radius: 10px;
-
-            padding: 12px 25px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            font-family: "Comic Neue", sans-serif;
-
-            font-size: 22px;
-
-            font-weight: 700;
-
-            background-color: white;
-
-            transition: 0.3s ease;
-        }
-
-
-        nav a:hover {
-            background-color: #ffe0eb;
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 5px 15px rgba(201, 79, 124, 0.2);
-        }
-
-
-        nav a i {
-            width: 45px;
-
-            height: 45px;
-
-            border-radius: 50%;
-
-            background-color: #f3a9c2;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: transparent;
-
-            font-size: 0;
-
-            flex-shrink: 0;
-        }
-
 
         /* =========================
            MAIN
@@ -342,112 +194,172 @@
 
         main {
             position: relative;
-
             z-index: 2;
-
             text-align: center;
-
             padding: 60px 20px;
         }
 
-
         main h2 {
             font-family: "Comic Neue", sans-serif;
-
             font-size: 35px;
-
             margin-bottom: 35px;
-
             color: #292929;
         }
-
 
         /* =========================
            ACTIVITIES CONTAINER
         ========================= */
 
         #activitiesContainer {
-            max-width: 850px;
-
+            max-width: 1100px;
             margin: 0 auto;
 
-            display: flex;
+            display: grid;
 
-            flex-direction: column;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 300px));
 
             gap: 25px;
-        }
 
+            justify-content: center;
+            align-items: start;
+        }
 
         /* =========================
            ACTIVITY CARD
         ========================= */
 
         .activity-card {
+            position: relative;
+
             border: 2px solid #f3a9c2;
-
             border-radius: 15px;
+            overflow: hidden;
 
-            padding: 20px;
-
-            background-color: rgba(255, 255, 255, 0.95);
-
-            text-align: center;
+            background-color: white;
+            text-align: left;
 
             box-shadow:
-                0 8px 20px rgba(201, 79, 124, 0.12);
+                0 8px 20px rgba(201, 79, 124, 0.15);
 
-            transition: 0.3s ease;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            cursor: none;
         }
-
 
         .activity-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
 
             box-shadow:
-                0 12px 25px rgba(201, 79, 124, 0.18);
+                0 12px 25px rgba(201, 79, 124, 0.25);
         }
 
+        /* =========================
+           PDF IMAGE PREVIEW
+        ========================= */
+
+        .pdf-preview {
+            width: 100%;
+            height: 200px;
+
+            background-color: #fce4ec;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .pdf-preview img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .activity-card:hover .pdf-preview img {
+            transform: scale(1.03);
+        }
 
         /* =========================
-           ACTIVITY NAME
+           ACTIVITY INFORMATION
         ========================= */
+
+        .activity-info {
+            padding: 12px 14px 14px;
+            background-color: #f8d8e5;
+        }
 
         .file-name {
             font-family: "Comic Neue", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
 
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 15px;
+            margin-bottom: 7px;
 
             color: #333;
         }
 
+        /* DATE */
+
+        .activity-date {
+            font-family: "Comic Neue", sans-serif;
+            font-size: 14px;
+
+            color: #d96b91;
+
+            margin-bottom: 5px;
+        }
+
+        /* SCORE */
+
+        .activity-score {
+            font-family: "Comic Neue", sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+
+            color: #c6537c;
+
+            margin-bottom: 12px;
+        }
 
         /* =========================
-           FILE LINK
+           VIEW PDF BUTTON
         ========================= */
 
         .file-link {
-            display: inline-block;
+            display: inline-flex;
 
-            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
 
             color: white;
 
             background-color: #d96b91;
 
-            padding: 10px 20px;
+            padding: 9px 16px;
 
             border-radius: 8px;
 
             font-family: "Comic Neue", sans-serif;
 
-            transition: 0.3s ease;
-        }
+            font-size: 15px;
+            font-weight: bold;
 
+            transition: 0.3s ease;
+
+            cursor: none;
+        }
 
         .file-link:hover {
             background-color: #b83f68;
@@ -455,6 +367,156 @@
             transform: scale(1.05);
         }
 
+        /* =========================
+           PDF MODAL
+        ========================= */
+
+        .pdf-modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 20000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-color:
+                rgba(20, 10, 25, 0.88);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+        .pdf-modal.show {
+            display: flex;
+        }
+
+        .pdf-modal-content {
+            position: relative;
+
+            width: 90%;
+            max-width: 1000px;
+
+            height: 90vh;
+
+            background-color: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 0 40px
+                rgba(243, 169, 194, 0.5);
+
+            animation:
+                popup 0.3s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        /* =========================
+           PDF HEADER
+        ========================= */
+
+        .pdf-header {
+            height: 55px;
+
+            background-color: #f8d8e5;
+
+            border-bottom:
+                2px solid #f3a9c2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family:
+                "Comic Neue",
+                sans-serif;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+        /* =========================
+           PDF VIEWER
+        ========================= */
+
+        .pdf-viewer {
+            width: 100%;
+
+            height:
+                calc(100% - 55px);
+
+            border: none;
+
+            background-color:
+                #f5f5f5;
+        }
+
+        /* =========================
+           CLOSE BUTTON
+        ========================= */
+
+        .close-pdf {
+            position: absolute;
+
+            top: 8px;
+            right: 10px;
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color:
+                #f3a9c2;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: none;
+
+            z-index: 5;
+
+            box-shadow:
+                0 3px 10px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        .close-pdf:hover {
+            background-color:
+                #df789d;
+        }
 
         /* =========================
            MOBILE
@@ -463,49 +525,33 @@
         @media (max-width: 800px) {
 
             header {
-                flex-direction: column;
-
-                gap: 25px;
-
-                text-align: center;
-
-                padding: 25px;
+                height: 30px;
             }
-
-
-            nav {
-                flex-wrap: wrap;
-
-                justify-content: center;
-            }
-
-
-            nav a {
-                font-size: 16px;
-
-                padding: 10px 15px;
-            }
-
-
-            nav a i {
-                width: 35px;
-
-                height: 35px;
-            }
-
 
             main {
                 padding: 40px 15px;
             }
 
-
             main h2 {
                 font-size: 30px;
             }
 
+            #activitiesContainer {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
 
-            .activity-card {
-                padding: 15px;
+            .pdf-preview {
+                height: 220px;
+            }
+
+            .pdf-modal {
+                padding: 10px;
+            }
+
+            .pdf-modal-content {
+                width: 98%;
+                height: 90vh;
             }
 
         }
@@ -516,7 +562,6 @@
 
 
 <body>
-
 
     <!-- =========================
          FLOATING HEARTS
@@ -536,62 +581,12 @@
     </div>
 
 
+    <!-- HEADER -->
 
-    <!-- =========================
-         HEADER
-    ========================= -->
-
-    <header>
-
-        <h1></h1>
+    <header></header>
 
 
-        <nav>
-
-            <a href="index.html">
-
-                <i class="fa-solid fa-house"></i>
-
-                Home
-
-            </a>
-
-
-            <a href="quizzes.html">
-
-                <i class="fa-solid fa-pen-to-square"></i>
-
-                Quizzes
-
-            </a>
-
-
-            <a href="activities.html">
-
-                <i class="fa-solid fa-list-check"></i>
-
-                Activities
-
-            </a>
-
-
-            <a href="exam.html">
-
-                <i class="fa-solid fa-book"></i>
-
-                Exam
-
-            </a>
-
-        </nav>
-
-    </header>
-
-
-
-    <!-- =========================
-         MAIN
-    ========================= -->
+    <!-- MAIN -->
 
     <main>
 
@@ -604,31 +599,103 @@
 
 
             <!-- =========================
-                 ADD YOUR ACTIVITIES HERE
+                 ACTIVITY 1
             ========================= -->
-
-            <!--
-
-            Example:
 
             <div class="activity-card">
 
-                <div class="file-name">
-                    Activity 1
+                <!-- IMAGE PREVIEW -->
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="Img/Screenshot 2026-10-08 174319.png"
+                        alt="POLIDAN - ACTIVITY 1 Preview">
+
                 </div>
 
-                <a
-                    href="activities/activity1.pdf"
-                    target="_blank"
-                    class="file-link">
 
-                    Open Activity
+                <!-- INFORMATION -->
 
-                </a>
+                <div class="activity-info">
+
+                    <div class="file-name">
+                        POLIDAN - ACTIVITY 1
+                    </div>
+
+                    <div class="activity-date">
+                         October 8, 2026
+                    </div>
+
+                    <div class="activity-score">
+                        Score: none
+                    </div>
+
+                    <button
+                        type="button"
+                        class="file-link"
+                        onclick="openPDF(
+                            'Activity1/POLIDAN - ACTIVITY 1.pdf',
+                            'POLIDAN - ACTIVITY 1'
+                        )">
+
+                        View PDF
+
+                    </button>
+
+                </div>
 
             </div>
 
-            -->
+
+            <!-- =========================
+                 ACTIVITY 2
+            ========================= -->
+
+            <div class="activity-card">
+
+                <!-- IMAGE PREVIEW -->
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="Img2/Screenshot 2026-10-08 174729.png"
+                        alt="POLIDAN - ACTIVITY 2 Preview">
+
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="activity-info">
+
+                    <div class="file-name">
+                        POLIDAN - ACTIVITY 2
+                    </div>
+
+                    <div class="activity-date">
+                        October 8, 2026
+                    </div>
+
+                    <div class="activity-score">
+                         Score: none
+                    </div>
+
+                    <button
+                        type="button"
+                        class="file-link"
+                        onclick="openPDF(
+                            'Act/POLIDAN_ACTIVITY 2.pdf',
+                            'POLIDAN_ACTIVITY 2.pdf'
+                        )">
+
+                        View PDF
+
+                    </button>
+
+                </div>
+
+            </div>
 
 
         </div>
@@ -636,41 +703,156 @@
     </main>
 
 
-
     <!-- =========================
-         CURSOR TRAIL
+         PDF MODAL
     ========================= -->
 
-    <canvas id="cursorTrail"></canvas>
+    <div
+        class="pdf-modal"
+        id="pdfModal">
+
+        <div class="pdf-modal-content">
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="close-pdf"
+                onclick="closePDF()">
+
+                ×
+
+            </button>
 
 
-    <!-- =========================
-         CUSTOM CURSOR
-    ========================= -->
+            <!-- PDF TITLE -->
 
-    <div class="custom-cursor"></div>
+            <div
+                class="pdf-header"
+                id="pdfTitle">
+
+                Activity PDF
+
+            </div>
 
 
+            <!-- PDF -->
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+            <iframe
+                class="pdf-viewer"
+                id="pdfViewer"
+                title="Activity PDF">
+
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+    <!-- CURSOR TRAIL -->
+
+    <canvas
+        id="cursorTrail">
+    </canvas>
+
+
+    <!-- CUSTOM CURSOR -->
+
+    <div
+        class="custom-cursor">
+    </div>
+
 
     <script>
 
+        /* =========================
+           PDF MODAL
+        ========================= */
+
+        const pdfModal =
+            document.getElementById("pdfModal");
+
+        const pdfViewer =
+            document.getElementById("pdfViewer");
+
+        const pdfTitle =
+            document.getElementById("pdfTitle");
+
+
+        function openPDF(pdfFile, title) {
+
+            pdfViewer.src = pdfFile;
+
+            pdfTitle.textContent = title;
+
+            pdfModal.classList.add("show");
+
+        }
+
+
+        function closePDF() {
+
+            pdfModal.classList.remove("show");
+
+            pdfViewer.src = "";
+
+        }
+
+
+        /* =========================
+           CLOSE OUTSIDE MODAL
+        ========================= */
+
+        pdfModal.addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === pdfModal) {
+
+                    closePDF();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           ESC KEY
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    closePDF();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           CUSTOM CURSOR
+        ========================= */
+
         const cursor =
-            document.querySelector(".custom-cursor");
+            document.querySelector(
+                ".custom-cursor"
+            );
 
         const canvas =
-            document.getElementById("cursorTrail");
+            document.getElementById(
+                "cursorTrail"
+            );
 
         const ctx =
             canvas.getContext("2d");
 
-
-        /* =========================
-           CANVAS SIZE
-        ========================= */
 
         function resizeCanvas() {
 
@@ -682,13 +864,9 @@
 
         }
 
+
         resizeCanvas();
 
-
-
-        /* =========================
-           MOUSE POSITION
-        ========================= */
 
         let mouseX =
             window.innerWidth / 2;
@@ -707,13 +885,11 @@
                 mouseY =
                     event.clientY;
 
-
                 cursor.style.left =
                     mouseX + "px";
 
                 cursor.style.top =
                     mouseY + "px";
-
 
                 createHeart(
                     mouseX,
@@ -722,7 +898,6 @@
 
             }
         );
-
 
 
         /* =========================
@@ -766,7 +941,6 @@
         }
 
 
-
         /* =========================
            DRAW HEART
         ========================= */
@@ -781,12 +955,10 @@
 
             ctx.save();
 
-
             ctx.translate(
                 x,
                 y
             );
-
 
             ctx.rotate(
                 rotation *
@@ -794,63 +966,48 @@
                 180
             );
 
-
             ctx.globalAlpha =
                 opacity;
-
 
             ctx.fillStyle =
                 "#f3a9c2";
 
-
             ctx.shadowBlur =
                 12;
-
 
             ctx.shadowColor =
                 "#f3a9c2";
 
-
             ctx.beginPath();
-
 
             ctx.moveTo(
                 0,
                 size * 0.3
             );
 
-
             ctx.bezierCurveTo(
                 -size,
                 -size * 0.3,
-
                 -size * 0.6,
                 -size,
-
                 0,
                 -size * 0.35
             );
 
-
             ctx.bezierCurveTo(
                 size * 0.6,
                 -size,
-
                 size,
                 -size * 0.3,
-
                 0,
                 size * 0.3
             );
 
-
             ctx.fill();
-
 
             ctx.restore();
 
         }
-
 
 
         /* =========================
@@ -862,7 +1019,6 @@
             ctx.clearRect(
                 0,
                 0,
-
                 canvas.width,
                 canvas.height
             );
@@ -877,18 +1033,14 @@
                 const heart =
                     hearts[i];
 
-
                 heart.x +=
                     heart.speedX;
-
 
                 heart.y +=
                     heart.speedY;
 
-
                 heart.opacity -=
                     0.015;
-
 
                 heart.size *=
                     0.995;
@@ -927,7 +1079,6 @@
         animate();
 
 
-
         /* =========================
            RESIZE
         ========================= */
@@ -942,14 +1093,13 @@
         );
 
 
-
         /* =========================
-           CURSOR HOVER EFFECT
+           CURSOR HOVER
         ========================= */
 
         const clickableElements =
             document.querySelectorAll(
-                "a, button"
+                "button, .activity-card"
             );
 
 
@@ -983,7 +1133,6 @@
         );
 
     </script>
-
 
 </body>
 
