@@ -10,9 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -51,10 +55,16 @@ body {
 .floating-hearts span:nth-child(8) { left: 45%; animation-delay: 7s; font-size: 20px; }
 
 @keyframes floatUp {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
     20% { opacity: .6; }
     50% { transform: translateY(-400px) rotate(20deg); }
-    100% { transform: translateY(-100vh) rotate(-20deg); opacity: 0; }
+    100% {
+        transform: translateY(-100vh) rotate(-20deg);
+        opacity: 0;
+    }
 }
 
 /* HEADER */
@@ -135,8 +145,14 @@ nav a:hover {
 }
 
 @keyframes homeEnter {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* IMAGE AND NOTES WRAPPER */
@@ -191,7 +207,7 @@ nav a:hover {
     50% { transform: translateY(-10px); }
 }
 
-/* CUTE PAPER NOTE */
+/* CUTE PAPER NOTE — LEFT SIDE OF IMAGE */
 .hobby-note {
     position: absolute;
     top: 18px;
@@ -208,10 +224,14 @@ nav a:hover {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity .25s ease, transform .3s ease, visibility .25s;
+    transition:
+        opacity .25s ease,
+        transform .3s ease,
+        visibility .25s;
     z-index: 20;
 }
 
+/* PINK TAPE */
 .hobby-note::before {
     content: "";
     position: absolute;
@@ -376,6 +396,7 @@ nav a:hover {
     border-color: #e8a0be;
 }
 
+/* CURSOR TRAIL */
 #cursorTrail {
     position: fixed;
     inset: 0;
@@ -426,7 +447,10 @@ nav a:hover {
 }
 
 @keyframes popupEnter {
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .quiz-popup-header {
@@ -477,21 +501,61 @@ nav a:hover {
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {
-    header { flex-direction: column; gap: 20px; }
-    nav { margin-left: 0; justify-content: center; }
-    .home { gap: 40px; }
-    .image-notes-wrapper { width: 320px; height: 320px; }
-    .home-img::before { font-size: 310px; }
-    .home-content { width: 480px; }
-    .home-content h1 { font-size: 42px; }
-    .hobby-note { width: 225px; }
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .home {
+        gap: 40px;
+    }
+
+    .image-notes-wrapper {
+        width: 320px;
+        height: 320px;
+    }
+
+    .home-img::before {
+        font-size: 310px;
+    }
+
+    .home-content {
+        width: 480px;
+    }
+
+    .home-content h1 {
+        font-size: 42px;
+    }
+
+    .hobby-note {
+        width: 225px;
+    }
 }
 
 @media (max-width: 900px) {
-    header { padding: 25px; }
-    .logo { font-size: 42px; }
-    nav a { font-size: 20px; padding: 8px 12px; }
-    nav a .circle { width: 35px; height: 35px; flex-basis: 35px; }
+    header {
+        padding: 25px;
+    }
+
+    .logo {
+        font-size: 42px;
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 8px 12px;
+    }
+
+    nav a .circle {
+        width: 35px;
+        height: 35px;
+        flex-basis: 35px;
+    }
 
     .home {
         flex-direction: column;
@@ -508,8 +572,11 @@ nav a:hover {
         margin-bottom: 0;
     }
 
-    .home-img::before { font-size: 290px; }
+    .home-img::before {
+        font-size: 290px;
+    }
 
+    /* ON SMALLER SCREENS, NOTE SITS ABOVE THE IMAGE */
     .hobby-note {
         top: auto;
         bottom: calc(100% + 22px);
@@ -530,21 +597,56 @@ nav a:hover {
         text-align: center;
     }
 
-    .home-content h1 { font-size: 40px; }
-    .home-content h3 { font-size: 26px; }
-    .home-content p { font-size: 22px; }
-    .quiz-popup-box { width: 95%; height: 90%; }
+    .home-content h1 {
+        font-size: 40px;
+    }
+
+    .home-content h3 {
+        font-size: 26px;
+    }
+
+    .home-content p {
+        font-size: 22px;
+    }
+
+    .quiz-popup-box {
+        width: 95%;
+        height: 90%;
+    }
 }
 
 @media (max-width: 500px) {
-    body { cursor: auto; }
+    body {
+        cursor: auto;
+    }
 
-    .custom-cursor, #cursorTrail { display: none; }
-    .logo { font-size: 35px; }
-    nav { gap: 8px; }
-    nav a { padding: 8px; gap: 7px; }
-    nav a span:not(.circle) { display: none; }
-    nav a .circle { width: 30px; height: 30px; flex-basis: 30px; }
+    .custom-cursor,
+    #cursorTrail {
+        display: none;
+    }
+
+    .logo {
+        font-size: 35px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 8px;
+        gap: 7px;
+    }
+
+    nav a span:not(.circle) {
+        display: none;
+    }
+
+    nav a .circle {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
+    }
 
     .image-notes-wrapper {
         width: 250px;
@@ -552,12 +654,30 @@ nav a:hover {
         margin-top: 180px;
     }
 
-    .home-img::before { font-size: 245px; }
-    .hobby-note { width: 230px; padding: 17px 15px 14px; }
-    .note-title { font-size: 25px; }
-    .home-content h1 { font-size: 32px; }
-    .home-content h3 { font-size: 22px; }
-    .home-content p { font-size: 20px; }
+    .home-img::before {
+        font-size: 245px;
+    }
+
+    .hobby-note {
+        width: 230px;
+        padding: 17px 15px 14px;
+    }
+
+    .note-title {
+        font-size: 25px;
+    }
+
+    .home-content h1 {
+        font-size: 32px;
+    }
+
+    .home-content h3 {
+        font-size: 22px;
+    }
+
+    .home-content p {
+        font-size: 20px;
+    }
 
     .quiz-popup-box {
         width: 96%;
@@ -565,11 +685,16 @@ nav a:hover {
         border-radius: 18px;
     }
 
-    .quiz-popup-header h2 { font-size: 22px; }
+    .quiz-popup-header h2 {
+        font-size: 22px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .home-img, .floating-hearts span, .home, .quiz-popup-box {
+    .home-img,
+    .floating-hearts span,
+    .home,
+    .quiz-popup-box {
         animation: none;
     }
 }
@@ -620,7 +745,9 @@ nav a:hover {
 <!-- HOME SECTION -->
 <section class="home" id="homeSection">
 
+    <!-- BUBBLES IMAGE AND NOTE -->
     <div class="image-notes-wrapper">
+
         <div class="home-img">
             <img
                 src="./image.png/Image.webp"
@@ -634,7 +761,9 @@ nav a:hover {
             >
         </div>
 
+        <!-- NOTE APPEARS ON THE LEFT SIDE -->
         <aside class="hobby-note" id="hobbyNote" aria-hidden="true">
+
             <button
                 type="button"
                 class="note-close"
@@ -643,6 +772,7 @@ nav a:hover {
             >×</button>
 
             <h3 class="note-title">♡ Little Notes ♡</h3>
+
             <hr class="note-divider">
 
             <p class="note-label">🎸 My Hobbies</p>
@@ -660,8 +790,10 @@ nav a:hover {
 
             <p class="note-footer">made with love ♡</p>
         </aside>
+
     </div>
 
+    <!-- INTRODUCTION -->
     <div class="home-content">
         <h1 class="name-text">
             Halooo! It's me <span></span>
@@ -679,11 +811,13 @@ nav a:hover {
             Psst... click my picture for a surprise! ♡
         </p>
     </div>
+
 </section>
 
 <!-- QUIZZES / ACTIVITIES / EXAM POPUP -->
 <div class="quiz-popup" id="quizPopup" aria-hidden="true">
     <div class="quiz-popup-box">
+
         <div class="quiz-popup-header">
             <h2 id="popupTitle">💗 My Quizzes</h2>
 
@@ -700,6 +834,7 @@ nav a:hover {
             id="quizFrame"
             title="Portfolio Content"
         ></iframe>
+
     </div>
 </div>
 
@@ -718,6 +853,7 @@ function resizeCanvas() {
 
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
+
     canvas.style.width = window.innerWidth + "px";
     canvas.style.height = window.innerHeight + "px";
 
@@ -739,7 +875,9 @@ function createHeart(x, y) {
         rotation: Math.random() * 360
     });
 
-    if (hearts.length > 45) hearts.shift();
+    if (hearts.length > 45) {
+        hearts.shift();
+    }
 }
 
 document.addEventListener("mousemove", function(event) {
@@ -796,7 +934,9 @@ function animate() {
             heart.opacity
         );
 
-        if (heart.opacity <= 0) hearts.splice(i, 1);
+        if (heart.opacity <= 0) {
+            hearts.splice(i, 1);
+        }
     }
 
     requestAnimationFrame(animate);
@@ -816,90 +956,6 @@ document.querySelectorAll("a, button, .home-img img").forEach(element => {
     });
 });
 
-/* CUTE SOUND EFFECTS */
-let audioContext;
-
-function playTone(frequency, delay, duration, volume = 0.06) {
-    try {
-        const AudioContextClass =
-            window.AudioContext || window.webkitAudioContext;
-
-        if (!AudioContextClass) return;
-
-        if (!audioContext) audioContext = new AudioContextClass();
-
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-
-        const start = audioContext.currentTime + delay;
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-
-        oscillator.type = "sine";
-        oscillator.frequency.setValueAtTime(frequency, start);
-
-        gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(volume, start + 0.025);
-        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-
-        oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        oscillator.start(start);
-        oscillator.stop(start + duration + 0.02);
-    } catch (error) {
-        console.log("Sound unavailable:", error);
-    }
-}
-
-function playCuteSound() {
-    playTone(880, 0, 0.12, 0.06);
-    playTone(1174.66, 0.09, 0.16, 0.05);
-}
-
-function playNoteSound() {
-    playTone(1046.50, 0, 0.15, 0.06);
-    playTone(1318.51, 0.10, 0.18, 0.05);
-    playTone(1567.98, 0.20, 0.22, 0.045);
-}
-
-/* CUTE JAPANESE GREETING */
-function sayKonnichiwa() {
-    if (!("speechSynthesis" in window)) return;
-
-    window.speechSynthesis.cancel();
-
-    const voices = window.speechSynthesis.getVoices();
-
-    const japaneseVoices = voices.filter(voice =>
-        voice.lang.toLowerCase().startsWith("ja")
-    );
-
-    const preferredVoice = japaneseVoices.find(voice =>
-        /female|woman|kyoko|haruka|nanami|sayaka|mizuki/i.test(voice.name)
-    );
-
-    const greeting = new SpeechSynthesisUtterance("こんにちは〜！");
-
-    greeting.lang = "ja-JP";
-    greeting.rate = 0.82;
-    greeting.pitch = 1.5;
-    greeting.volume = 1;
-
-    if (preferredVoice) {
-        greeting.voice = preferredVoice;
-    } else if (japaneseVoices.length > 0) {
-        greeting.voice = japaneseVoices[0];
-    } else {
-        console.warn(
-            "No Japanese voice found. Install or enable a Japanese voice on your device."
-        );
-    }
-
-    window.speechSynthesis.speak(greeting);
-}
-
 /* BUBBLES IMAGE NOTE */
 const bubblesImage = document.getElementById("bubblesImage");
 const hobbyNote = document.getElementById("hobbyNote");
@@ -908,31 +964,15 @@ const closeNote = document.getElementById("closeNote");
 function toggleNote() {
     const isOpen = hobbyNote.classList.contains("show");
 
-    if (!isOpen) {
-        playNoteSound();
-
-        hobbyNote.classList.add("show");
-        hobbyNote.setAttribute("aria-hidden", "false");
-        bubblesImage.setAttribute("aria-expanded", "true");
-
-        setTimeout(() => {
-            if (hobbyNote.classList.contains("show")) {
-                sayKonnichiwa();
-            }
-        }, 350);
-    } else {
-        hideNote();
-    }
+    hobbyNote.classList.toggle("show", !isOpen);
+    hobbyNote.setAttribute("aria-hidden", String(isOpen));
+    bubblesImage.setAttribute("aria-expanded", String(!isOpen));
 }
 
 function hideNote() {
     hobbyNote.classList.remove("show");
     hobbyNote.setAttribute("aria-hidden", "true");
     bubblesImage.setAttribute("aria-expanded", "false");
-
-    if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-    }
 }
 
 bubblesImage.addEventListener("click", toggleNote);
@@ -946,7 +986,6 @@ bubblesImage.addEventListener("keydown", function(event) {
 
 closeNote.addEventListener("click", function(event) {
     event.stopPropagation();
-    playCuteSound();
     hideNote();
 });
 
@@ -955,7 +994,9 @@ document.addEventListener("click", function(event) {
     const clickedImage = bubblesImage.contains(event.target);
     const clickedNote = hobbyNote.contains(event.target);
 
-    if (!clickedImage && !clickedNote) hideNote();
+    if (!clickedImage && !clickedNote) {
+        hideNote();
+    }
 });
 
 /* POPUP ELEMENTS */
@@ -975,9 +1016,10 @@ let navigationTimer;
 /* OPEN POPUP */
 function openPopup(page, title) {
     clearTimeout(navigationTimer);
-    hideNote();
 
+    hideNote();
     popupTitle.textContent = title;
+
     quizPopup.classList.add("show");
     quizPopup.setAttribute("aria-hidden", "false");
 
@@ -1023,20 +1065,18 @@ examLink.addEventListener("click", function(event) {
 
 homeLink.addEventListener("click", function(event) {
     event.preventDefault();
-    playCuteSound();
     closePopup();
     hideNote();
 });
 
 /* CLOSE BUTTON */
-closeQuiz.addEventListener("click", function() {
-    playCuteSound();
-    closePopup();
-});
+closeQuiz.addEventListener("click", closePopup);
 
 /* CLICK OUTSIDE POPUP */
 quizPopup.addEventListener("click", function(event) {
-    if (event.target === quizPopup) closePopup();
+    if (event.target === quizPopup) {
+        closePopup();
+    }
 });
 
 /* ESCAPE KEY */
@@ -1054,6 +1094,7 @@ document.addEventListener("keydown", function(event) {
 quizFrame.addEventListener("load", function() {
     try {
         const iframeDocument = quizFrame.contentDocument;
+
         if (!iframeDocument) return;
 
         iframeDocument.querySelectorAll("a").forEach(link => {
@@ -1067,15 +1108,28 @@ quizFrame.addEventListener("load", function() {
                 .toLowerCase();
 
             const pages = {
-                "activities.html": ["activities.html", "💗 My Activities"],
-                "quizzes.html": ["quizzes.html", "💗 My Quizzes"],
-                "exam.html": ["exam.html", "💗 My Exam"]
+                "activities.html": [
+                    "activities.html",
+                    "💗 My Activities"
+                ],
+                "quizzes.html": [
+                    "quizzes.html",
+                    "💗 My Quizzes"
+                ],
+                "exam.html": [
+                    "exam.html",
+                    "💗 My Exam"
+                ]
             };
 
             if (pages[filename]) {
                 link.addEventListener("click", function(event) {
                     event.preventDefault();
-                    openPopup(pages[filename][0], pages[filename][1]);
+
+                    openPopup(
+                        pages[filename][0],
+                        pages[filename][1]
+                    );
                 });
             }
 
